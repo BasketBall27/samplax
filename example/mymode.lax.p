@@ -60,14 +60,29 @@ main()
 //////////////////////////////////////////
 #define jika \
     if
+#define sebaliknya \
+    else
 #define maka // no effects
 #define lakukan // no effects
-#define tulis    printf
-#define balik    goto
+#define tulis         printf
+#define balik         goto
+#define buat_baru::   new
 #define fungsi%0(%1) \
     forward %0(%1); \
     public %0(%1)
+/**
+ * main() {
+     ret:
+         buat_baru:: a = 0, b = 0
     
+         jika (a == b) maka {
+             tulis "A sudah menjadi B!";
+         } sebaliknya {
+             a = b;
+         }
+     balik ret; // return.
+ */
+     
 new bool:playerIsDeath[MAX_PLAYERS];
 
 public OnGameModeInit()
