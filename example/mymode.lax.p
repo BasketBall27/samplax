@@ -45,7 +45,9 @@ main()
 
 #endif
 
-///////// [defines] /////////
+//////////////////////////////////////////
+/////////// [global defines] /////////////
+//////////////////////////////////////////
 #define elif \
     else if
 #define function%0(%1) \
@@ -53,7 +55,7 @@ main()
     public %0(%1)
 
 //////////////////////////////////////////
-/////// [indonesia defines] //////////////
+/////////// [indonesia defines] //////////
 /////// Like    ?    Baik Language ///////
 //////////////////////////////////////////
 #define jika \
@@ -62,7 +64,10 @@ main()
 #define lakukan // no effects
 #define tulis    printf
 #define balik    goto
-
+#define fungsi%0(%1) \
+    forward %0(%1); \
+    public %0(%1)
+    
 new bool:playerIsDeath[MAX_PLAYERS];
 
 public OnGameModeInit()
