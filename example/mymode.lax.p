@@ -80,7 +80,7 @@ main()
 /**
  * main() {
      baru num = 0, num2 = 0
-     panggil "myFunction", "d", num;
+     panggil "myFunction", "dd", num, num2;
  * }
 
  * myFunction(num, num2) {
