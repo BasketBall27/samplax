@@ -91,7 +91,7 @@ SET "BATCHOPTION=cat"
 
 IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
-    TASKKILL /f /im "!DEFAULTS!" >nul 2>&1
+    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
 
     SET "BATCHTITLE=compilers"
     TITLE %username%@%computername%:~/!BATCHTITLE!
@@ -103,6 +103,8 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -r" (
 
+    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+    
     SET "BATCHTITLE=running"
     TITLE %username%@%computername%:~/!BATCHTITLE!
 
@@ -113,20 +115,20 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :TESTSERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
     
-    TASKKILL /f /im "!DEFAULTS!" >nul 2>&1
+    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
     
     TIMEOUT /t 1 >nul
-        START /min "" "!DEFAULTS!"
+        START /min "" "%DEFAULTS%"
     TIMEOUT /t 1 >nul
         TYPE server_log.txt
 		ECHO.
-	TASKKILL /f /im "!DEFAULTS!" >nul 2>&1
+	TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
 	
     GOTO BATCHEND
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -ci" (
 
-    TASKKILL /f /im "!DEFAULTS!" >nul 2>&1
+    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
 
     SET "BATCHTITLE=compile running"
     TITLE %username%@%computername%:~/!BATCHTITLE!
@@ -143,13 +145,13 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :SERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
 	
-    START "" "!DEFAULTS!"
+    START "" "%DEFAULTS%"
 	
     TIMEOUT /t 2 >nul
-    TASKLIST | FIND /i "!DEFAULTS!" >nul
+    TASKLIST | FIND /i "%DEFAULTS%" >nul
 
-    IF not EXIST !DEFAULTS! (
-        ECHO # !DEFAULTS! not found..
+    IF not EXIST %DEFAULTS% (
+        ECHO # %DEFAULTS% not found..
         TIMEOUT /t 1 >nul
             START "" "https://sa-mp.app/"
         GOTO COMMAND_TYPEOF
@@ -178,7 +180,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         ECHO # [%time%] S?.. Done
         ECHO.
 		
-        TIMEOUT /t 1 >nul
+        TIMEOUT /t 2 >nul
         FINDSTR /i "error" server_log.txt >nul && CALL :START_TRUE2 || CALL :START_FALSE2
 
 :START_TRUE2
@@ -234,12 +236,12 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     ECHO.
     FINDSTR /i "error" ^> server_log.txt
     ECHO.
-    GOTO CHECK3
+    GOTO CHECK2
 :FAILED_CACHE
     ECHO.
     FINDSTR /i "failed" ^> server_log.txt
     ECHO.
-    GOTO CHECK2
+    GOTO CHECK3
 :INVALID_CACHE
     ECHO.
     FINDSTR /i "invalid" ^> server_log.txt
