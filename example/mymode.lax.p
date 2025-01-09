@@ -77,13 +77,15 @@ main()
     public %0(%1)
 #define panggil \
     CallLocalFunction
+#define inline \
+    stock
 /**
  * main() {
      baru num = 0, num2 = 0
      panggil "myFunction", "dd", num, num2;
  * }
 
- * myFunction(num, num2) {
+ * inline myFunction(num, num2) {
      ret:
          baru a = num, b = num2
     
