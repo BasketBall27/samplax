@@ -1,4 +1,4 @@
-# [SA:MP-LAX 2.3]()
+# [SA:MP-LAX 2.3](https://github.com/laterium/samplax/tree/main/lax/src)
 
 ## Getting Started
 1. Download from "Code" or [clone the repository using Git.](#cloning)
