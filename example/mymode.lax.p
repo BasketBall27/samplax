@@ -66,14 +66,14 @@ main()
 #define lakukan // no effects
 #define tulis         printf
 #define balik         goto
-#define buat_baru::   new
+#define baru          new
 #define fungsi%0(%1) \
     forward %0(%1); \
     public %0(%1)
 /**
  * main() {
      ret:
-         buat_baru:: a = 0, b = 0
+         baru a = 0, b = 0
     
          jika (a == b) maka {
              tulis "A sudah menjadi B!";
