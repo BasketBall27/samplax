@@ -183,7 +183,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_TRUE
         <nul SET /p=""
             CALL :COLOURTEXT 4X "~"
-            ECHO    Failed?  .. Yes .. True
+            ECHO    "Failed"  .. Yes .. True
         CALL :FAILED_CACHE
         
         GOTO :eof
@@ -191,7 +191,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_FALSE
         <nul SET /p=""
             CALL :COLOURTEXT a "~"
-            ECHO    Failed?  .. No .. False
+            ECHO    "Failed"  .. No .. False
 
 :CHECK2
         FINDSTR /i "error" server_log.txt >nul && CALL :START_TRUE2 || CALL :START_FALSE2
@@ -199,7 +199,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_TRUE2
         <nul SET /p=""
             CALL :COLOURTEXT 4X "~"
-            ECHO    Error?   .. Yes .. True
+            ECHO    "Error"   .. Yes .. True
         CALL :ERROR_CACHE
         
         GOTO :eof
@@ -207,7 +207,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_FALSE2
         <nul SET /p=""
             CALL :COLOURTEXT a "~"
-            ECHO    Error?   .. No .. False
+            ECHO    "Error"   .. No .. False
         
 :CHECK3
         FINDSTR /i "invalid" server_log.txt >nul && CALL :START_TRUE3 || CALL :START_FALSE3
@@ -215,7 +215,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_TRUE3
         <nul SET /p=""
             CALL :COLOURTEXT 4X "~"
-            ECHO    Invalid? .. Yes .. True
+            ECHO    "Invalid" .. Yes .. True
         CALL :INVALID_CACHE
 
         GOTO :eof
@@ -223,7 +223,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :START_FALSE3
         <nul SET /p=""
             CALL :COLOURTEXT a "~"
-            ECHO    Invalid? .. No .. false
+            ECHO    "Invalid" .. No .. false
 
         ECHO.
         GOTO BATCHEND
