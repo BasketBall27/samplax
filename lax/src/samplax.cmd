@@ -178,22 +178,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         ECHO # [%time%] S?.. Done
         ECHO.
 		
-        FINDSTR /i "failed" server_log.txt >nul && CALL :START_TRUE || CALL :START_FALSE
-
-:START_TRUE
-        <nul SET /p=""
-            CALL :COLOURTEXT 4X "~"
-            ECHO    "Failed"  .. Yes .. True
-        CALL :FAILED_CACHE
-        
-        GOTO :eof
-
-:START_FALSE
-        <nul SET /p=""
-            CALL :COLOURTEXT a "~"
-            ECHO    "Failed"  .. No .. False
-
-:CHECK2
+        TIMEOUT /t 1 >nul
         FINDSTR /i "error" server_log.txt >nul && CALL :START_TRUE2 || CALL :START_FALSE2
 
 :START_TRUE2
@@ -209,6 +194,22 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
             CALL :COLOURTEXT a "~"
             ECHO    "Error"   .. No .. False
         
+:CHECK2
+        FINDSTR /i "failed" server_log.txt >nul && CALL :START_TRUE || CALL :START_FALSE
+
+:START_TRUE
+        <nul SET /p=""
+            CALL :COLOURTEXT 4X "~"
+            ECHO    "Failed"  .. Yes .. True
+        CALL :FAILED_CACHE
+        
+        GOTO :eof
+
+:START_FALSE
+        <nul SET /p=""
+            CALL :COLOURTEXT a "~"
+            ECHO    "Failed"  .. No .. False
+
 :CHECK3
         FINDSTR /i "invalid" server_log.txt >nul && CALL :START_TRUE3 || CALL :START_FALSE3
 
@@ -229,16 +230,16 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         GOTO BATCHEND
     )
 
-:FAILED_CACHE
-    ECHO.
-    FINDSTR /i "failed" ^> server_log.txt
-    ECHO.
-    GOTO CHECK2
 :ERROR_CACHE
     ECHO.
     FINDSTR /i "error" ^> server_log.txt
     ECHO.
     GOTO CHECK3
+:FAILED_CACHE
+    ECHO.
+    FINDSTR /i "failed" ^> server_log.txt
+    ECHO.
+    GOTO CHECK2
 :INVALID_CACHE
     ECHO.
     FINDSTR /i "invalid" ^> server_log.txt
