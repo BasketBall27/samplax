@@ -52,6 +52,17 @@ main()
     forward %0(%1); \
     public %0(%1)
 
+//////////////////////////////////////////
+/////// [indonesia defines] //////////////
+/////// Like    ?    Baik Language ///////
+//////////////////////////////////////////
+#define jika \
+    if
+#define maka // no effects
+#define lakukan // no effects
+#define tulis    printf
+#define balik    goto
+
 new bool:playerIsDeath[MAX_PLAYERS];
 
 public OnGameModeInit()
