@@ -79,7 +79,7 @@ main()
     CallLocalFunction
 /**
  * main() {
-     new num = 0, num2 = 0
+     baru num = 0, num2 = 0
      panggil "myFunction", "d", num;
  * }
 
