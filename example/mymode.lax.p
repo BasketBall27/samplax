@@ -81,7 +81,7 @@ main()
              a = b;
          }
          balik ret; // return.
-    * }
+ * }
  */
      
 new bool:playerIsDeath[MAX_PLAYERS];
