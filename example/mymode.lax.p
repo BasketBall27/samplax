@@ -64,10 +64,14 @@ main()
     else
 #define maka // no effects
 #define lakukan // no effects
-#define tulis         printf
-#define balik         goto
-#define baru          new
-#define tamat         return
+#define tulis \
+    printf
+#define balik 
+    goto
+#define baru \
+    new
+#define tamat \
+    return
 #define fungsi%0(%1) \
     forward %0(%1); \
     public %0(%1)
