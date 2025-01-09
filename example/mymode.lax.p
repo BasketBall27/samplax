@@ -45,6 +45,13 @@ main()
 
 #endif
 
+///////// [defines] /////////
+#define elif \
+    else if
+#define function%0(%1) \
+    forward %0(%1); \
+    public %0(%1)
+
 new bool:playerIsDeath[MAX_PLAYERS];
 
 public OnGameModeInit()
