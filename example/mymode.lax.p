@@ -75,10 +75,17 @@ main()
 #define fungsi%0(%1) \
     forward %0(%1); \
     public %0(%1)
+#define panggil \
+    CallLocalFunction
 /**
  * main() {
+     new num = 0, num2 = 0
+     panggil "myFunction", "d", num;
+ * }
+
+ * myFunction(num, num2) {
      ret:
-         baru a = 0, b = 0
+         baru a = num, b = num2
     
          jika (a == b) maka {
              tulis "A sudah menjadi B!";
