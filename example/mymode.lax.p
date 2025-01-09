@@ -80,7 +80,8 @@ main()
          } sebaliknya {
              a = b;
          }
-     balik ret; // return.
+         balik ret; // return.
+    * }
  */
      
 new bool:playerIsDeath[MAX_PLAYERS];
