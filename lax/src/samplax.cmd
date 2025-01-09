@@ -65,10 +65,10 @@ TITLE %username%@%computername%:~
 
 SET "BATCHDIR=%~dp0"
 SET "BATCHTITLE="
+SET "BATCHSTS=false"
+SET "BATCHPAWNCC="
 SET "BATCHNAME=samplax.cmd"
-SET "DEFAULTS=samp-server.exe"
-SET "COMSTS=false"
-SET "COMPAWNCC="
+SET "SVRDEF=samp-server.exe"
 
 :COMMAND_TYPEOF
 FOR /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & ECHO on & FOR %%b in (1) do rem"') do (SET "DEL=%%a")
@@ -91,19 +91,19 @@ SET "BATCHOPTION=cat"
 
 IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
-    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
 
     SET "BATCHTITLE=compilers"
     TITLE %username%@%computername%:~/!BATCHTITLE!
     
     ECHO.
 
-    SET "COMSTS=true"
+    SET "BATCHSTS=true"
     GOTO COMPILERS
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -r" (
 
-    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
     
     SET "BATCHTITLE=running"
     TITLE %username%@%computername%:~/!BATCHTITLE!
@@ -115,25 +115,25 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :TESTSERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
     
-    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
     
     TIMEOUT /t 1 >nul
-        START /min "" "%DEFAULTS%"
+        START /min "" "%SVRDEF%"
     TIMEOUT /t 1 >nul
         TYPE server_log.txt
 		ECHO.
-	TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+	TASKKILL /f /im "%SVRDEF%" >nul 2>&1
 	
     GOTO BATCHEND
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -ci" (
 
-    TASKKILL /f /im "%DEFAULTS%" >nul 2>&1
+    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
 
     SET "BATCHTITLE=compile running"
     TITLE %username%@%computername%:~/!BATCHTITLE!
 
-    SET "COMSTS=false"
+    SET "BATCHSTS=false"
     
     CALL :COMPILERS
     FINDSTR /i "error" %METADAT_FILE% >nul && ECHO. || CALL :OK_NEXT
@@ -145,13 +145,13 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :SERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
 	
-    START "" "%DEFAULTS%"
+    START "" "%SVRDEF%"
 	
     TIMEOUT /t 2 >nul
-    TASKLIST | FIND /i "%DEFAULTS%" >nul
+    TASKLIST | FIND /i "%SVRDEF%" >nul
 
-    IF not EXIST %DEFAULTS% (
-        ECHO # %DEFAULTS% not found..
+    IF not EXIST %SVRDEF% (
+        ECHO # %SVRDEF% not found..
         TIMEOUT /t 1 >nul
             START "" "https://sa-mp.app/"
         GOTO COMMAND_TYPEOF
@@ -481,12 +481,12 @@ GOTO COMMAND_TYPEOF
 
     FOR /r "%BATCHDIR%" %%P in (pawncc.exe) DO (
         IF EXIST "%%P" (
-            SET "COMPAWNCC=%%P"
+            SET "BATCHPAWNCC=%%P"
             GOTO PAWNCC
         )
     )
 :PAWNCC
-    IF not DEFINED COMPAWNCC (
+    IF not DEFINED BATCHPAWNCC (
         ECHO.
             ECHO # [%time%] pawncc not found in any subdirectories.
         ECHO.
@@ -507,7 +507,7 @@ GOTO COMMAND_TYPEOF
             SET "AMX_O=%%~dpnF"
             SET "AMX_O=!AMX_O:.lax=!%.amx"
 
-            "!COMPAWNCC!" "%%F" %ASM_OPTION_M%"!AMX_O!" %ASM_OPTION_P% > %METADAT_FILE% 2>&1
+            "!BATCHPAWNCC!" "%%F" %ASM_OPTION_M%"!AMX_O!" %ASM_OPTION_P% > %METADAT_FILE% 2>&1
             TYPE %METADAT_FILE%
 
             IF EXIST "!AMX_O!" (
@@ -520,10 +520,10 @@ GOTO COMMAND_TYPEOF
 
                         CALL :COLOURTEXT a "[#]~"
 						
-                        IF "%COMSTS%"=="true" (
+                        IF "%BATCHSTS%"=="true" (
                             SET "BATCHTITLE=compilers "%ASM_OPTION_M% %ASM_OPTION_P%""
                             TITLE %username%@%computername%:~/!BATCHTITLE!
-                        ) ELSE IF "%COMSTS%"=="false" (
+                        ) ELSE IF "%BATCHSTS%"=="false" (
                             SET "BATCHTITLE=compiler - running "%ASM_OPTION_M% %ASM_OPTION_P%""
                             TITLE %username%@%computername%:~/!BATCHTITLE!
                         )
@@ -535,7 +535,7 @@ GOTO COMMAND_TYPEOF
                             CALL :COLOURTEXT 4X "[#]~"
                             ECHO Compilation failed!. ERR? .. Yes
                     endlocal
-                        IF "%COMSTS%"=="false" (
+                        IF "%BATCHSTS%"=="false" (
                             GOTO BATCHEND
                         )
                 )
@@ -551,6 +551,6 @@ GOTO COMMAND_TYPEOF
         endlocal
         ECHO    ~ "!BATCHDIR!.lax" no files found.
     )
-    IF "%COMSTS%"=="true" (
+    IF "%BATCHSTS%"=="true" (
         GOTO BATCHEND
     )
