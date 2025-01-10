@@ -1,5 +1,6 @@
 #define ROTL(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
+// Initial hash values for SHA-1
 new const H[5] = {
     0x67452301,
     0xEFCDAB89,
@@ -19,15 +20,19 @@ stock SHA1(input[]) {
     // Preprocessing (Padding)
     memcpy(data, input, len);
     data[len] = 0x80; // Append 1 bit
-    for (new i = len + 1; i < 56; i++) data[i] = 0;
-    new bit_len = len * 8;
-    for (new i = 0; i < 8; i++) data[63 - i] = (bit_len >> (8 * i)) & 0xFF;
+    for (new i = len + 1; i < 56; i++) data[i] = 0; // Fill with 0x00 until 56th byte
+    new bit_len = len * 8; // Length in bits
+    for (new i = 0; i < 8; i++) data[63 - i] = (bit_len >> (8 * i)) & 0xFF; // Append the bit length in the last 8 bytes
 
     // Process the message in 512-bit chunks
-    for (new i = 0; i < 16; i++)
+    for (new i = 0; i < 16; i++) {
         W[i] = (data[i * 4] << 24) | (data[i * 4 + 1] << 16) | (data[i * 4 + 2] << 8) | (data[i * 4 + 3]);
-    for (new i = 16; i < 80; i++)
+    }
+    
+    // Expanding the W array (80 words)
+    for (new i = 16; i < 80; i++) {
         W[i] = ROTL(W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16], 1);
+    }
 
     // Initialize working variables
     a = Htemp[0];
@@ -40,16 +45,16 @@ stock SHA1(input[]) {
     for (new i = 0; i < 80; i++) {
         if (i < 20) {
             f = (b & c) | ((~b) & d);
-            k = 0x5A827999;
+            k = 0x5A827999; // Constants for the first 20 iterations
         } else if (i < 40) {
             f = b ^ c ^ d;
-            k = 0x6ED9EBA1;
+            k = 0x6ED9EBA1; // Constants for the next 20 iterations
         } else if (i < 60) {
             f = (b & c) | (b & d) | (c & d);
-            k = 0x8F1BBCDC;
+            k = 0x8F1BBCDC; // Constants for the next 20 iterations
         } else {
             f = b ^ c ^ d;
-            k = 0xCA62C1D6;
+            k = 0xCA62C1D6; // Constants for the last 20 iterations
         }
 
         temp = (ROTL(a, 5) + f + e + k + W[i]) & 0xFFFFFFFF;
@@ -69,7 +74,8 @@ stock SHA1(input[]) {
 
     // Produce the final hash value as a string
     new result[41], offset = 0;
-    for (new i = 0; i < 5; i++)
+    for (new i = 0; i < 5; i++) {
         offset += format(result[offset], 41 - offset, "%08x", Htemp[i]);
+    }
     return result;
 }
