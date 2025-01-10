@@ -45,6 +45,9 @@ main()
 
 #endif
 
+//////////////////////////////////////////
+/////////// [global floats] //////////////
+//////////////////////////////////////////
 Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
     new Float:minDistance = 999999.9;
     new Float:currentDistance;
