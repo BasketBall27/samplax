@@ -88,6 +88,21 @@ Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY,
     }
 }
 
+SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis) {
+    new Float:pos[3];
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+
+    new Float:offset = amplitude * floatsin(2.0 * 3.14159 * frequency * time);
+
+    switch (axis) {
+        case 0: pos[0] += offset;
+        case 1: pos[1] += offset;
+        case 2: pos[2] += offset;
+    }
+
+    SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+}
+
 //////////////////////////////////////////
 /////////// [global defines] /////////////
 //////////////////////////////////////////
