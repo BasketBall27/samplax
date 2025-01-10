@@ -1,14 +1,3 @@
-/*******************************************
-*   Copyright (c) Laterium Contributors    *
-*   ===================================    *
-*   Laterium Project SA:MP PAWN/LAX 2.3    *
-*   ===================================    *
-********************************************/
-
-#include "a_samp"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 stock Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
     new Float:minDistance = 999999.9;
     new Float:currentDistance;
@@ -421,6 +410,3 @@ stock TorusPath(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:maj
 
     SetObjectPos(objectid, x, y, z);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
