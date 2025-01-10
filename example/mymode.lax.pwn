@@ -45,9 +45,30 @@ main()
 
 #endif
 
-//////////////////////////////////////////
-/////////// [global floats] //////////////
-//////////////////////////////////////////
+public OnGameModeInit()
+{
+    // Don't use these lines if it's a filterscript
+    SetGameModeText "Blank Script";
+    AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
+
+    return 1;
+}
+
+public OnGameModeExit()
+{
+    return 1;
+}
+
+public OnPlayerRequestClass(playerid, classid)
+{
+    SetPlayerPos(playerid, 1958.3783, 1343.1572, 15.3746);
+    SetPlayerCameraPos(playerid, 1958.3783, 1343.1572, 15.3746);
+    SetPlayerCameraLookAt(playerid, 1958.3783, 1343.1572, 15.3746);
+    return 1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
     new Float:minDistance = 999999.9;
     new Float:currentDistance;
@@ -357,24 +378,3 @@ SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-public OnGameModeInit()
-{
-    // Don't use these lines if it's a filterscript
-    SetGameModeText "Blank Script";
-    AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
-
-    return 1;
-}
-
-public OnGameModeExit()
-{
-    return 1;
-}
-
-public OnPlayerRequestClass(playerid, classid)
-{
-    SetPlayerPos(playerid, 1958.3783, 1343.1572, 15.3746);
-    SetPlayerCameraPos(playerid, 1958.3783, 1343.1572, 15.3746);
-    SetPlayerCameraLookAt(playerid, 1958.3783, 1343.1572, 15.3746);
-    return 1;
-}
