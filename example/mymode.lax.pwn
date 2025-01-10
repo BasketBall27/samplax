@@ -103,6 +103,96 @@ SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis)
     SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 }
 
+Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
+    new Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2;
+    GetPlayerPos(playerid1, x1, y1, z1);
+    GetPlayerPos(playerid2, x2, y2, z2);
+
+    new Float:deltaX = x2 - x1;
+    new Float:deltaY = y2 - y1;
+
+    return atan2(deltaY, deltaX) * 180.0 / 3.14159;
+}
+
+SpiralMovement(playerid, Float:radius, Float:angularSpeed, Float:verticalSpeed, Float:time) {
+    new Float:angle = angularSpeed * time;
+    new Float:xOffset = radius * floatcos(angle, degrees);
+    new Float:yOffset = radius * floatsin(angle, degrees);
+    new Float:zOffset = verticalSpeed * time;
+
+    new Float:pos[3];
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+
+    SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2] + zOffset);
+}
+
+IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:maxX, Float:maxY, Float:maxZ) {
+    new Float:pos[3];
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+
+    if (pos[0] >= minX && pos[0] <= maxX &&
+        pos[1] >= minY && pos[1] <= maxY &&
+        pos[2] >= minZ && pos[2] <= maxZ) {
+        return 1;
+    }
+    return 0;
+}
+
+CircularMovement(playerid, Float:radius, Float:speed, Float:time) {
+    new Float:angle = speed * time;
+    new Float:xOffset = radius * floatcos(angle, degrees);
+    new Float:yOffset = radius * floatsin(angle, degrees);
+
+    new Float:pos[3];
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+
+    SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2]);
+}
+
+WaveExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:amplitude, Float:frequency, Float:time) {
+    for (new angle = 0; angle < 360; angle += 30) {
+        new Float:rad = angle * 3.14159 / 180.0;
+        new Float:x = centerX + radius * floatcos(rad, degrees);
+        new Float:y = centerY + radius * floatsin(rad, degrees);
+        new Float:z = centerZ + amplitude * floatsin(frequency * time + rad);
+
+        CreateExplosion(x, y, z, 10, 1.0);
+    }
+}
+
+ScalePlayerPosition(playerid, Float:scaleX, Float:scaleY, Float:scaleZ) {
+    new Float:pos[3];
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+
+    pos[0] *= scaleX;
+    pos[1] *= scaleY;
+    pos[2] *= scaleZ;
+
+    SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+}
+
+Float:GetPointOn3DCircle(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:angle, axis, &Float:x, &Float:y, &Float:z) {
+    new Float:rad = angle * 3.14159 / 180.0;
+
+    switch (axis) {
+        case 0: {
+            x = centerX;
+            y = centerY + radius * floatcos(rad, degrees);
+            z = centerZ + radius * floatsin(rad, degrees);
+        }
+        case 1: {
+            x = centerX + radius * floatsin(rad, degrees);
+            y = centerY;
+            z = centerZ + radius * floatcos(rad, degrees);
+        }
+        case 2: {
+            x = centerX + radius * floatcos(rad, degrees);
+            y = centerY + radius * floatsin(rad, degrees);
+            z = centerZ;
+        }
+    }
+}
+
 stock strtok(const input[], &index, output[], size)
 {
     new length = strlen(input);
