@@ -376,5 +376,42 @@ SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius
     SetPlayerCameraLookAt(playerid, centerX, centerY, centerZ);
 }
 
+DynamicSpiralMovement(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusIncrement, Float:verticalSpeed, Float:time, Float:angularSpeed) {
+    new Float:angle = angularSpeed * time;
+    new Float:radius = initialRadius + radiusIncrement * time;
+    new Float:x = centerX + radius * floatcos(angle, degrees);
+    new Float:y = centerY + radius * floatsin(angle, degrees);
+    new Float:z = centerZ + verticalSpeed * time;
+
+    SetObjectPos(objectid, x, y, z);
+}
+
+RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:axisX, Float:axisY, Float:axisZ, Float:angle, Float:time) {
+    new Float:radAngle = angle * (PI / 180.0);
+    new Float:cosA = floatcos(radAngle);
+    new Float:sinA = floatsin(radAngle);
+
+    new Float:x, Float:y, Float:z;
+    GetObjectPos(objectid, x, y, z);
+
+    new Float:relX = x - centerX;
+    new Float:relY = y - centerY;
+    new Float:relZ = z - centerZ;
+
+    new Float:newX = (cosA + (1.0 - cosA) * axisX * axisX) * relX +
+                     ((1.0 - cosA) * axisX * axisY - sinA * axisZ) * relY +
+                     ((1.0 - cosA) * axisX * axisZ + sinA * axisY) * relZ;
+
+    new Float:newY = ((1.0 - cosA) * axisY * axisX + sinA * axisZ) * relX +
+                     (cosA + (1.0 - cosA) * axisY * axisY) * relY +
+                     ((1.0 - cosA) * axisY * axisZ - sinA * axisX) * relZ;
+
+    new Float:newZ = ((1.0 - cosA) * axisZ * axisX - sinA * axisY) * relX +
+                     ((1.0 - cosA) * axisZ * axisY + sinA * axisX) * relY +
+                     (cosA + (1.0 - cosA) * axisZ * axisZ) * relZ;
+
+    SetObjectPos(objectid, centerX + newX, centerY + newY, centerZ + newZ);
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
