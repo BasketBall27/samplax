@@ -278,6 +278,83 @@ Float:CalculateDistanceBetweenObjects(objectid1, objectid2) {
     return floatsqroot((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
 }
 
+SpiralUpwardMovement(objectid, Float:centerX, Float:centerY, Float:initialZ, Float:radius, Float:verticalSpeed, Float:time) {
+    new Float:angle = time * 45.0;
+    new Float:x = centerX + radius * floatcos(angle, degrees);
+    new Float:y = centerY + radius * floatsin(angle, degrees);
+    new Float:z = initialZ + verticalSpeed * time;
+
+    SetObjectPos(objectid, x, y, z);
+}
+
+ProjectileTrajectory(Float:startX, Float:startY, Float:startZ, Float:velocity, Float:angle, Float:gravity, Float:time) {
+    new Float:x = startX + velocity * time * floatcos(angle, degrees);
+    new Float:y = startY + velocity * time * floatsin(angle, degrees);
+    new Float:z = startZ + velocity * time * floatsin(angle, degrees) - 0.5 * gravity * time * time;
+
+    CreateExplosion(x, y, z, 10, 1.0);
+}
+
+WaveMovement(objectid, Float:amplitude, Float:wavelength, Float:speed, Float:centerX, Float:centerY, Float:centerZ, Float:time) {
+    new Float:x = centerX + wavelength * time;
+    new Float:z = centerZ + amplitude * floatsin(speed * time, degrees);
+
+    SetObjectPos(objectid, x, centerY, z);
+}
+
+EllipseMovement(objectid, Float:centerX, Float:centerY, Float:radiusX, Float:radiusY, Float:angleSpeed, Float:time) {
+    new Float:angle = time * angleSpeed;
+    new Float:x = centerX + radiusX * floatcos(angle, degrees);
+    new Float:y = centerY + radiusY * floatsin(angle, degrees);
+
+    SetObjectPos(objectid, x, y, centerY);
+}
+
+RandomizedMovement(objectid, Float:originX, Float:originY, Float:originZ, Float:maxRadius) {
+    new Float:x = originX + floatrandom(maxRadius) - maxRadius / 2;
+    new Float:y = originY + floatrandom(maxRadius) - maxRadius / 2;
+    new Float:z = originZ + floatrandom(maxRadius) - maxRadius / 2;
+
+    SetObjectPos(objectid, x, y, z);
+}
+
+Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ, Float:frequency, Float:time) {
+    new Float:xOffset = amplitudeX * floatsin(frequency * time, degrees);
+    new Float:yOffset = amplitudeY * floatcos(frequency * time, degrees);
+    new Float:zOffset = amplitudeZ * floatsin(frequency * time, degrees);
+
+    new Float:x, Float:y, Float:z;
+    GetObjectPos(objectid, x, y, z);
+    SetObjectPos(objectid, x + xOffset, y + yOffset, z + zOffset);
+}
+
+FlowerExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
+    for (new i = 0; i < 360; i += 45) {
+        new Float:angle = i + (floatsin(time, degrees) * 30.0);
+        new Float:x = centerX + radius * floatcos(angle, degrees);
+        new Float:y = centerY + radius * floatsin(angle, degrees);
+
+        CreateExplosion(x, y, centerZ, 10, 1.0);
+    }
+}
+
+LissajousCurve(objectid, Float:centerX, Float:centerY, Float:amplitudeX, Float:amplitudeY, Float:frequencyX, Float:frequencyY, Float:time) {
+    new Float:x = centerX + amplitudeX * floatsin(frequencyX * time, degrees);
+    new Float:y = centerY + amplitudeY * floatcos(frequencyY * time, degrees);
+
+    SetObjectPos(objectid, x, y, centerY);
+}
+
+SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:heightSpeed, Float:time) {
+    new Float:angle = time * 45.0;
+    new Float:x = centerX + radius * floatcos(angle, degrees);
+    new Float:y = centerY + radius * floatsin(angle, degrees);
+    new Float:z = centerZ + heightSpeed * time;
+
+    SetPlayerCameraPos(playerid, x, y, z);
+    SetPlayerCameraLookAt(playerid, centerX, centerY, centerZ);
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public OnGameModeInit()
