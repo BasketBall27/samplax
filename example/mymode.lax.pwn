@@ -447,6 +447,16 @@ SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
     }
 }
 
+TorusPath(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:majorRadius, Float:minorRadius, Float:rotationSpeed, Float:time) {
+    new Float:theta = rotationSpeed * time;
+    new Float:phi = rotationSpeed * time / 2.0;
+
+    new Float:x = centerX + (majorRadius + minorRadius * floatcos(phi, degrees)) * floatcos(theta, degrees);
+    new Float:y = centerY + (majorRadius + minorRadius * floatcos(phi, degrees)) * floatsin(theta, degrees);
+    new Float:z = centerZ + minorRadius * floatsin(phi, degrees);
+
+    SetObjectPos(objectid, x, y, z);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
