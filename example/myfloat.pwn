@@ -9,7 +9,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
+stock Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
     new Float:minDistance = 999999.9;
     new Float:currentDistance;
 
@@ -28,7 +28,7 @@ Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points
     return minDistance;
 }
 
-Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY, &Float:newZ) {
+stock Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY, &Float:newZ) {
     new Float:rad = angle * 3.14159 / 180.0;
     new Float:cosA = floatcos(rad, degrees);
     new Float:sinA = floatsin(rad, degrees);
@@ -52,7 +52,7 @@ Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY,
     }
 }
 
-SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis) {
+stock SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis) {
     new Float:pos[3];
     GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 
@@ -67,7 +67,7 @@ SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis)
     SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 }
 
-Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
+stock Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
     new Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2;
     GetPlayerPos(playerid1, x1, y1, z1);
     GetPlayerPos(playerid2, x2, y2, z2);
@@ -78,7 +78,7 @@ Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
     return atan2(deltaY, deltaX) * 180.0 / 3.14159;
 }
 
-SpiralMovement(playerid, Float:radius, Float:angularSpeed, Float:verticalSpeed, Float:time) {
+stock SpiralMovement(playerid, Float:radius, Float:angularSpeed, Float:verticalSpeed, Float:time) {
     new Float:angle = angularSpeed * time;
     new Float:xOffset = radius * floatcos(angle, degrees);
     new Float:yOffset = radius * floatsin(angle, degrees);
@@ -90,7 +90,7 @@ SpiralMovement(playerid, Float:radius, Float:angularSpeed, Float:verticalSpeed, 
     SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2] + zOffset);
 }
 
-IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:maxX, Float:maxY, Float:maxZ) {
+stock IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:maxX, Float:maxY, Float:maxZ) {
     new Float:pos[3];
     GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 
@@ -102,7 +102,7 @@ IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:maxX, 
     return 0;
 }
 
-CircularMovement(playerid, Float:radius, Float:speed, Float:time) {
+stock CircularMovement(playerid, Float:radius, Float:speed, Float:time) {
     new Float:angle = speed * time;
     new Float:xOffset = radius * floatcos(angle, degrees);
     new Float:yOffset = radius * floatsin(angle, degrees);
@@ -113,7 +113,7 @@ CircularMovement(playerid, Float:radius, Float:speed, Float:time) {
     SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2]);
 }
 
-WaveExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:amplitude, Float:frequency, Float:time) {
+stock WaveExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:amplitude, Float:frequency, Float:time) {
     for (new angle = 0; angle < 360; angle += 30) {
         new Float:rad = angle * 3.14159 / 180.0;
         new Float:x = centerX + radius * floatcos(rad, degrees);
@@ -124,7 +124,7 @@ WaveExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:a
     }
 }
 
-ScalePlayerPosition(playerid, Float:scaleX, Float:scaleY, Float:scaleZ) {
+stock ScalePlayerPosition(playerid, Float:scaleX, Float:scaleY, Float:scaleZ) {
     new Float:pos[3];
     GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 
@@ -135,7 +135,7 @@ ScalePlayerPosition(playerid, Float:scaleX, Float:scaleY, Float:scaleZ) {
     SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 }
 
-Float:GetPointOn3DCircle(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:angle, axis, &Float:x, &Float:y, &Float:z) {
+stock Float:GetPointOn3DCircle(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:angle, axis, &Float:x, &Float:y, &Float:z) {
     new Float:rad = angle * 3.14159 / 180.0;
 
     switch (axis) {
@@ -157,7 +157,7 @@ Float:GetPointOn3DCircle(Float:centerX, Float:centerY, Float:centerZ, Float:radi
     }
 }
 
-OscillatePlayer(playerid, Float:amplitude, Float:frequency, Float:time) {
+stock OscillatePlayer(playerid, Float:amplitude, Float:frequency, Float:time) {
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
 
@@ -165,7 +165,7 @@ OscillatePlayer(playerid, Float:amplitude, Float:frequency, Float:time) {
     SetPlayerPos(playerid, x, y, z + zOffset);
 }
 
-AdjustCameraHeight(playerid, Float:heightOffset) {
+stock AdjustCameraHeight(playerid, Float:heightOffset) {
     new Float:pos[3], Float:lookAt[3];
     GetPlayerCameraPos(playerid, pos[0], pos[1], pos[2]);
     GetPlayerCameraLookAt(playerid, lookAt[0], lookAt[1], lookAt[2]);
@@ -177,7 +177,7 @@ AdjustCameraHeight(playerid, Float:heightOffset) {
     SetPlayerCameraLookAt(playerid, lookAt[0], lookAt[1], lookAt[2]);
 }
 
-StarExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
+stock StarExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
     for (new i = 0; i < 5; i++) {
         new Float:angle1 = (72 * i) + (36 * floatsin(time, degrees));
         new Float:angle2 = angle1 + 144;
@@ -193,7 +193,7 @@ StarExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:t
     }
 }
 
-MoveObjectInHelix(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:verticalSpeed, Float:time) {
+stock MoveObjectInHelix(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:verticalSpeed, Float:time) {
     new Float:angle = time * 30.0;
     new Float:x = centerX + radius * floatcos(angle, degrees);
     new Float:y = centerY + radius * floatsin(angle, degrees);
@@ -202,7 +202,7 @@ MoveObjectInHelix(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:r
     SetObjectPos(objectid, x, y, z);
 }
 
-ParabolicMovement(playerid, Float:initialX, Float:initialY, Float:initialZ, Float:velocityX, Float:velocityY, Float:initialVelocityZ, Float:gravity, Float:time) {
+stock ParabolicMovement(playerid, Float:initialX, Float:initialY, Float:initialZ, Float:velocityX, Float:velocityY, Float:initialVelocityZ, Float:gravity, Float:time) {
     new Float:x = initialX + velocityX * time;
     new Float:y = initialY + velocityY * time;
     new Float:z = initialZ + initialVelocityZ * time - 0.5 * gravity * time * time;
@@ -210,7 +210,7 @@ ParabolicMovement(playerid, Float:initialX, Float:initialY, Float:initialZ, Floa
     SetPlayerPos(playerid, x, y, z);
 }
 
-AnimatedCircularObject(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:shrinkRate, Float:time) {
+stock AnimatedCircularObject(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:shrinkRate, Float:time) {
     new Float:radius = initialRadius - shrinkRate * time;
     if (radius < 0.0) return;
 
@@ -221,7 +221,7 @@ AnimatedCircularObject(objectid, Float:centerX, Float:centerY, Float:centerZ, Fl
     SetObjectPos(objectid, x, y, centerZ);
 }
 
-ZigZagMovement(playerid, Float:amplitude, Float:speed, Float:time) {
+stock ZigZagMovement(playerid, Float:amplitude, Float:speed, Float:time) {
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
 
@@ -231,7 +231,7 @@ ZigZagMovement(playerid, Float:amplitude, Float:speed, Float:time) {
     SetPlayerPos(playerid, x + xOffset, y + yOffset, z);
 }
 
-Float:CalculateDistanceBetweenObjects(objectid1, objectid2) {
+stock Float:CalculateDistanceBetweenObjects(objectid1, objectid2) {
     new Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2;
     GetObjectPos(objectid1, x1, y1, z1);
     GetObjectPos(objectid2, x2, y2, z2);
@@ -239,7 +239,7 @@ Float:CalculateDistanceBetweenObjects(objectid1, objectid2) {
     return floatsqroot((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
 }
 
-SpiralUpwardMovement(objectid, Float:centerX, Float:centerY, Float:initialZ, Float:radius, Float:verticalSpeed, Float:time) {
+stock SpiralUpwardMovement(objectid, Float:centerX, Float:centerY, Float:initialZ, Float:radius, Float:verticalSpeed, Float:time) {
     new Float:angle = time * 45.0;
     new Float:x = centerX + radius * floatcos(angle, degrees);
     new Float:y = centerY + radius * floatsin(angle, degrees);
@@ -248,7 +248,7 @@ SpiralUpwardMovement(objectid, Float:centerX, Float:centerY, Float:initialZ, Flo
     SetObjectPos(objectid, x, y, z);
 }
 
-ProjectileTrajectory(Float:startX, Float:startY, Float:startZ, Float:velocity, Float:angle, Float:gravity, Float:time) {
+stock ProjectileTrajectory(Float:startX, Float:startY, Float:startZ, Float:velocity, Float:angle, Float:gravity, Float:time) {
     new Float:x = startX + velocity * time * floatcos(angle, degrees);
     new Float:y = startY + velocity * time * floatsin(angle, degrees);
     new Float:z = startZ + velocity * time * floatsin(angle, degrees) - 0.5 * gravity * time * time;
@@ -256,14 +256,14 @@ ProjectileTrajectory(Float:startX, Float:startY, Float:startZ, Float:velocity, F
     CreateExplosion(x, y, z, 10, 1.0);
 }
 
-WaveMovement(objectid, Float:amplitude, Float:wavelength, Float:speed, Float:centerX, Float:centerY, Float:centerZ, Float:time) {
+stock WaveMovement(objectid, Float:amplitude, Float:wavelength, Float:speed, Float:centerX, Float:centerY, Float:centerZ, Float:time) {
     new Float:x = centerX + wavelength * time;
     new Float:z = centerZ + amplitude * floatsin(speed * time, degrees);
 
     SetObjectPos(objectid, x, centerY, z);
 }
 
-EllipseMovement(objectid, Float:centerX, Float:centerY, Float:radiusX, Float:radiusY, Float:angleSpeed, Float:time) {
+stock EllipseMovement(objectid, Float:centerX, Float:centerY, Float:radiusX, Float:radiusY, Float:angleSpeed, Float:time) {
     new Float:angle = time * angleSpeed;
     new Float:x = centerX + radiusX * floatcos(angle, degrees);
     new Float:y = centerY + radiusY * floatsin(angle, degrees);
@@ -271,7 +271,7 @@ EllipseMovement(objectid, Float:centerX, Float:centerY, Float:radiusX, Float:rad
     SetObjectPos(objectid, x, y, centerY);
 }
 
-RandomizedMovement(objectid, Float:originX, Float:originY, Float:originZ, Float:maxRadius) {
+stock RandomizedMovement(objectid, Float:originX, Float:originY, Float:originZ, Float:maxRadius) {
     new Float:x = originX + floatrandom(maxRadius) - maxRadius / 2;
     new Float:y = originY + floatrandom(maxRadius) - maxRadius / 2;
     new Float:z = originZ + floatrandom(maxRadius) - maxRadius / 2;
@@ -279,7 +279,7 @@ RandomizedMovement(objectid, Float:originX, Float:originY, Float:originZ, Float:
     SetObjectPos(objectid, x, y, z);
 }
 
-Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ, Float:frequency, Float:time) {
+stock Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ, Float:frequency, Float:time) {
     new Float:xOffset = amplitudeX * floatsin(frequency * time, degrees);
     new Float:yOffset = amplitudeY * floatcos(frequency * time, degrees);
     new Float:zOffset = amplitudeZ * floatsin(frequency * time, degrees);
@@ -289,7 +289,7 @@ Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ, Floa
     SetObjectPos(objectid, x + xOffset, y + yOffset, z + zOffset);
 }
 
-FlowerExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
+stock FlowerExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
     for (new i = 0; i < 360; i += 45) {
         new Float:angle = i + (floatsin(time, degrees) * 30.0);
         new Float:x = centerX + radius * floatcos(angle, degrees);
@@ -299,14 +299,14 @@ FlowerExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float
     }
 }
 
-LissajousCurve(objectid, Float:centerX, Float:centerY, Float:amplitudeX, Float:amplitudeY, Float:frequencyX, Float:frequencyY, Float:time) {
+stock LissajousCurve(objectid, Float:centerX, Float:centerY, Float:amplitudeX, Float:amplitudeY, Float:frequencyX, Float:frequencyY, Float:time) {
     new Float:x = centerX + amplitudeX * floatsin(frequencyX * time, degrees);
     new Float:y = centerY + amplitudeY * floatcos(frequencyY * time, degrees);
 
     SetObjectPos(objectid, x, y, centerY);
 }
 
-FractalExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusReduction, Float:time, depth) {
+stock FractalExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusReduction, Float:time, depth) {
     if (depth <= 0 || initialRadius < 0.1) return;
 
     for (new i = 0; i < 360; i += 45) {
@@ -320,7 +320,7 @@ FractalExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:initialRadiu
     }
 }
 
-SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:heightSpeed, Float:time) {
+stock SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:heightSpeed, Float:time) {
     new Float:angle = time * 45.0;
     new Float:x = centerX + radius * floatcos(angle, degrees);
     new Float:y = centerY + radius * floatsin(angle, degrees);
@@ -330,7 +330,7 @@ SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius
     SetPlayerCameraLookAt(playerid, centerX, centerY, centerZ);
 }
 
-DynamicSpiralMovement(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusIncrement, Float:verticalSpeed, Float:time, Float:angularSpeed) {
+stock DynamicSpiralMovement(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusIncrement, Float:verticalSpeed, Float:time, Float:angularSpeed) {
     new Float:angle = angularSpeed * time;
     new Float:radius = initialRadius + radiusIncrement * time;
     new Float:x = centerX + radius * floatcos(angle, degrees);
@@ -340,7 +340,7 @@ DynamicSpiralMovement(objectid, Float:centerX, Float:centerY, Float:centerZ, Flo
     SetObjectPos(objectid, x, y, z);
 }
 
-RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:axisX, Float:axisY, Float:axisZ, Float:angle, Float:time) {
+stock RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:axisX, Float:axisY, Float:axisZ, Float:angle, Float:time) {
     new Float:radAngle = angle * (PI / 180.0);
     new Float:cosA = floatcos(radAngle);
     new Float:sinA = floatsin(radAngle);
@@ -367,7 +367,7 @@ RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:ax
     SetObjectPos(objectid, centerX + newX, centerY + newY, centerZ + newZ);
 }
 
-SimulateWaterWave(objectid, Float:centerX, Float:centerY, Float:baseZ, Float:amplitude, Float:wavelength, Float:speed, Float:time) {
+stock SimulateWaterWave(objectid, Float:centerX, Float:centerY, Float:baseZ, Float:amplitude, Float:wavelength, Float:speed, Float:time) {
     new Float:x, Float:y, Float:z;
     GetObjectPos(objectid, x, y, z);
 
@@ -377,7 +377,7 @@ SimulateWaterWave(objectid, Float:centerX, Float:centerY, Float:baseZ, Float:amp
     SetObjectPos(objectid, x, y, baseZ + wave);
 }
 
-SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
+stock SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
     for (new i = 0; i < count; i++) {
         new Float:x1, Float:y1, Float:z1;
         GetObjectPos(objects[i], x1, y1, z1);
@@ -411,7 +411,7 @@ SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
     }
 }
 
-TorusPath(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:majorRadius, Float:minorRadius, Float:rotationSpeed, Float:time) {
+stock TorusPath(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:majorRadius, Float:minorRadius, Float:rotationSpeed, Float:time) {
     new Float:theta = rotationSpeed * time;
     new Float:phi = rotationSpeed * time / 2.0;
 
