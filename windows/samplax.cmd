@@ -1,8 +1,5 @@
 @ECHO OFF
 
-:: SAMPLAX 2.3
-:: required : pawncc & git (optional)
-
 setlocal EnableDelayedExpansion
 
 color F
