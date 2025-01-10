@@ -1,22 +1,3 @@
-stock Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
-    new Float:minDistance = 999999.9;
-    new Float:currentDistance;
-
-    for (new i = 0; i < count; i++) {
-        currentDistance = floatsqroot(
-            floatpower(playerX - points[i][0], 2) +
-            floatpower(playerY - points[i][1], 2) +
-            floatpower(playerZ - points[i][2], 2)
-        );
-
-        if (currentDistance < minDistance) {
-            minDistance = currentDistance;
-        }
-    }
-
-    return minDistance;
-}
-
 stock Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY, &Float:newZ) {
     new Float:rad = angle * 3.14159 / 180.0;
     new Float:cosA = floatcos(rad, degrees);
@@ -41,21 +22,6 @@ stock Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float
     }
 }
 
-stock SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis) {
-    new Float:pos[3];
-    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
-
-    new Float:offset = amplitude * floatsin(2.0 * 3.14159 * frequency * time);
-
-    switch (axis) {
-        case 0: pos[0] += offset;
-        case 1: pos[1] += offset;
-        case 2: pos[2] += offset;
-    }
-
-    SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
-}
-
 stock Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
     new Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2;
     GetPlayerPos(playerid1, x1, y1, z1);
@@ -65,18 +31,6 @@ stock Float:CalculateAngleBetweenPlayers(playerid1, playerid2) {
     new Float:deltaY = y2 - y1;
 
     return atan2(deltaY, deltaX) * 180.0 / 3.14159;
-}
-
-stock SpiralMovement(playerid, Float:radius, Float:angularSpeed, Float:verticalSpeed, Float:time) {
-    new Float:angle = angularSpeed * time;
-    new Float:xOffset = radius * floatcos(angle, degrees);
-    new Float:yOffset = radius * floatsin(angle, degrees);
-    new Float:zOffset = verticalSpeed * time;
-
-    new Float:pos[3];
-    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
-
-    SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2] + zOffset);
 }
 
 stock IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:maxX, Float:maxY, Float:maxZ) {
@@ -89,28 +43,6 @@ stock IsPlayerInBoundingBox(playerid, Float:minX, Float:minY, Float:minZ, Float:
         return 1;
     }
     return 0;
-}
-
-stock CircularMovement(playerid, Float:radius, Float:speed, Float:time) {
-    new Float:angle = speed * time;
-    new Float:xOffset = radius * floatcos(angle, degrees);
-    new Float:yOffset = radius * floatsin(angle, degrees);
-
-    new Float:pos[3];
-    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
-
-    SetPlayerPos(playerid, pos[0] + xOffset, pos[1] + yOffset, pos[2]);
-}
-
-stock WaveExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:amplitude, Float:frequency, Float:time) {
-    for (new angle = 0; angle < 360; angle += 30) {
-        new Float:rad = angle * 3.14159 / 180.0;
-        new Float:x = centerX + radius * floatcos(rad, degrees);
-        new Float:y = centerY + radius * floatsin(rad, degrees);
-        new Float:z = centerZ + amplitude * floatsin(frequency * time + rad);
-
-        CreateExplosion(x, y, z, 10, 1.0);
-    }
 }
 
 stock ScalePlayerPosition(playerid, Float:scaleX, Float:scaleY, Float:scaleZ) {
@@ -166,22 +98,6 @@ stock AdjustCameraHeight(playerid, Float:heightOffset) {
     SetPlayerCameraLookAt(playerid, lookAt[0], lookAt[1], lookAt[2]);
 }
 
-stock StarExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
-    for (new i = 0; i < 5; i++) {
-        new Float:angle1 = (72 * i) + (36 * floatsin(time, degrees));
-        new Float:angle2 = angle1 + 144;
-
-        new Float:x1 = centerX + radius * floatcos(angle1, degrees);
-        new Float:y1 = centerY + radius * floatsin(angle1, degrees);
-
-        new Float:x2 = centerX + radius * floatcos(angle2, degrees);
-        new Float:y2 = centerY + radius * floatsin(angle2, degrees);
-
-        CreateExplosion(x1, y1, centerZ, 10, 1.0);
-        CreateExplosion(x2, y2, centerZ, 10, 1.0);
-    }
-}
-
 stock MoveObjectInHelix(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:verticalSpeed, Float:time) {
     new Float:angle = time * 30.0;
     new Float:x = centerX + radius * floatcos(angle, degrees);
@@ -189,14 +105,6 @@ stock MoveObjectInHelix(objectid, Float:centerX, Float:centerY, Float:centerZ, F
     new Float:z = centerZ + verticalSpeed * time;
 
     SetObjectPos(objectid, x, y, z);
-}
-
-stock ParabolicMovement(playerid, Float:initialX, Float:initialY, Float:initialZ, Float:velocityX, Float:velocityY, Float:initialVelocityZ, Float:gravity, Float:time) {
-    new Float:x = initialX + velocityX * time;
-    new Float:y = initialY + velocityY * time;
-    new Float:z = initialZ + initialVelocityZ * time - 0.5 * gravity * time * time;
-
-    SetPlayerPos(playerid, x, y, z);
 }
 
 stock AnimatedCircularObject(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:shrinkRate, Float:time) {
@@ -208,16 +116,6 @@ stock AnimatedCircularObject(objectid, Float:centerX, Float:centerY, Float:cente
     new Float:y = centerY + radius * floatsin(angle, degrees);
 
     SetObjectPos(objectid, x, y, centerZ);
-}
-
-stock ZigZagMovement(playerid, Float:amplitude, Float:speed, Float:time) {
-    new Float:x, Float:y, Float:z;
-    GetPlayerPos(playerid, x, y, z);
-
-    Float:xOffset = amplitude * floatsin(speed * time, degrees);
-    Float:yOffset = amplitude * floatcos(speed * time, degrees);
-
-    SetPlayerPos(playerid, x + xOffset, y + yOffset, z);
 }
 
 stock Float:CalculateDistanceBetweenObjects(objectid1, objectid2) {
@@ -237,37 +135,6 @@ stock SpiralUpwardMovement(objectid, Float:centerX, Float:centerY, Float:initial
     SetObjectPos(objectid, x, y, z);
 }
 
-stock ProjectileTrajectory(Float:startX, Float:startY, Float:startZ, Float:velocity, Float:angle, Float:gravity, Float:time) {
-    new Float:x = startX + velocity * time * floatcos(angle, degrees);
-    new Float:y = startY + velocity * time * floatsin(angle, degrees);
-    new Float:z = startZ + velocity * time * floatsin(angle, degrees) - 0.5 * gravity * time * time;
-
-    CreateExplosion(x, y, z, 10, 1.0);
-}
-
-stock WaveMovement(objectid, Float:amplitude, Float:wavelength, Float:speed, Float:centerX, Float:centerY, Float:centerZ, Float:time) {
-    new Float:x = centerX + wavelength * time;
-    new Float:z = centerZ + amplitude * floatsin(speed * time, degrees);
-
-    SetObjectPos(objectid, x, centerY, z);
-}
-
-stock EllipseMovement(objectid, Float:centerX, Float:centerY, Float:radiusX, Float:radiusY, Float:angleSpeed, Float:time) {
-    new Float:angle = time * angleSpeed;
-    new Float:x = centerX + radiusX * floatcos(angle, degrees);
-    new Float:y = centerY + radiusY * floatsin(angle, degrees);
-
-    SetObjectPos(objectid, x, y, centerY);
-}
-
-stock RandomizedMovement(objectid, Float:originX, Float:originY, Float:originZ, Float:maxRadius) {
-    new Float:x = originX + floatrandom(maxRadius) - maxRadius / 2;
-    new Float:y = originY + floatrandom(maxRadius) - maxRadius / 2;
-    new Float:z = originZ + floatrandom(maxRadius) - maxRadius / 2;
-
-    SetObjectPos(objectid, x, y, z);
-}
-
 stock Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ, Float:frequency, Float:time) {
     new Float:xOffset = amplitudeX * floatsin(frequency * time, degrees);
     new Float:yOffset = amplitudeY * floatcos(frequency * time, degrees);
@@ -278,35 +145,11 @@ stock Oscillate3D(objectid, Float:amplitudeX, Float:amplitudeY, Float:amplitudeZ
     SetObjectPos(objectid, x + xOffset, y + yOffset, z + zOffset);
 }
 
-stock FlowerExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:time) {
-    for (new i = 0; i < 360; i += 45) {
-        new Float:angle = i + (floatsin(time, degrees) * 30.0);
-        new Float:x = centerX + radius * floatcos(angle, degrees);
-        new Float:y = centerY + radius * floatsin(angle, degrees);
-
-        CreateExplosion(x, y, centerZ, 10, 1.0);
-    }
-}
-
 stock LissajousCurve(objectid, Float:centerX, Float:centerY, Float:amplitudeX, Float:amplitudeY, Float:frequencyX, Float:frequencyY, Float:time) {
     new Float:x = centerX + amplitudeX * floatsin(frequencyX * time, degrees);
     new Float:y = centerY + amplitudeY * floatcos(frequencyY * time, degrees);
 
     SetObjectPos(objectid, x, y, centerY);
-}
-
-stock FractalExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusReduction, Float:time, depth) {
-    if (depth <= 0 || initialRadius < 0.1) return;
-
-    for (new i = 0; i < 360; i += 45) {
-        new Float:angle = i + time * 10.0;
-        new Float:x = centerX + initialRadius * floatcos(angle, degrees);
-        new Float:y = centerY + initialRadius * floatsin(angle, degrees);
-        new Float:z = centerZ + floatsin(angle, degrees) * initialRadius / 2.0;
-
-        CreateExplosion(x, y, z, 10, 1.0);
-        FractalExplosion(x, y, z, initialRadius * radiusReduction, radiusReduction, time, depth - 1);
-    }
 }
 
 stock SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:heightSpeed, Float:time) {
