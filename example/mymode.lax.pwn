@@ -366,6 +366,20 @@ LissajousCurve(objectid, Float:centerX, Float:centerY, Float:amplitudeX, Float:a
     SetObjectPos(objectid, x, y, centerY);
 }
 
+FractalExplosion(Float:centerX, Float:centerY, Float:centerZ, Float:initialRadius, Float:radiusReduction, Float:time, depth) {
+    if (depth <= 0 || initialRadius < 0.1) return;
+
+    for (new i = 0; i < 360; i += 45) {
+        new Float:angle = i + time * 10.0;
+        new Float:x = centerX + initialRadius * floatcos(angle, degrees);
+        new Float:y = centerY + initialRadius * floatsin(angle, degrees);
+        new Float:z = centerZ + floatsin(angle, degrees) * initialRadius / 2.0;
+
+        CreateExplosion(x, y, z, 10, 1.0);
+        FractalExplosion(x, y, z, initialRadius * radiusReduction, radiusReduction, time, depth - 1);
+    }
+}
+
 SpiralCamera(playerid, Float:centerX, Float:centerY, Float:centerZ, Float:radius, Float:heightSpeed, Float:time) {
     new Float:angle = time * 45.0;
     new Float:x = centerX + radius * floatcos(angle, degrees);
@@ -411,6 +425,16 @@ RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:ax
                      (cosA + (1.0 - cosA) * axisZ * axisZ) * relZ;
 
     SetObjectPos(objectid, centerX + newX, centerY + newY, centerZ + newZ);
+}
+
+SimulateWaterWave(objectid, Float:centerX, Float:centerY, Float:baseZ, Float:amplitude, Float:wavelength, Float:speed, Float:time) {
+    new Float:x, Float:y, Float:z;
+    GetObjectPos(objectid, x, y, z);
+
+    new Float:wave = amplitude * floatsin((x - centerX) / wavelength + speed * time, degrees) +
+                     amplitude * floatsin((y - centerY) / wavelength + speed * time, degrees);
+
+    SetObjectPos(objectid, x, y, baseZ + wave);
 }
 
 SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
