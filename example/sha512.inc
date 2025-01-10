@@ -1,5 +1,3 @@
-#define ROTR(x, n) (((x) >> (n)) | ((x) << (64 - (n))) & 0xFFFFFFFFFFFFFFFF)
-
 new const H[8] = {
     0x6A09E667F3BCC908, 0xBB67AE85A1D7A6E5, 0x3C6EF372FE94F82B, 0xA54FF53A5F1D36F1,
     0x510E527FADE682D1, 0x9B05688C2B3E6C1F, 0x1F83D9ABFB41BD6B, 0x5BE0CD19137E2179
@@ -35,8 +33,9 @@ stock SHA512(input[]) {
                (data[i * 8 + 3] << 32) | (data[i * 8 + 4] << 24) | (data[i * 8 + 5] << 16) |
                (data[i * 8 + 6] << 8) | (data[i * 8 + 7]);
     for (new i = 16; i < 80; i++)
-        W[i] = (ROTR(W[i - 2], 19) ^ ROTR(W[i - 2], 61) ^ (W[i - 2] >> 6)) + W[i - 7] + 
-               (ROTR(W[i - 15], 1) ^ ROTR(W[i - 15], 8) ^ (W[i - 15] >> 7)) + W[i - 16];
+        W[i] = ((W[i - 2] >> 19) | (W[i - 2] << (64 - 19))) ^ ((W[i - 2] >> 61) | (W[i - 2] << (64 - 61))) ^
+               (W[i - 2] >> 6) + W[i - 7] + ((W[i - 15] >> 1) | (W[i - 15] << (64 - 1))) ^
+               ((W[i - 15] >> 8) | (W[i - 15] << (64 - 8))) ^ (W[i - 15] >> 7) + W[i - 16];
 
     // Initialize working variables
     a = Htemp[0];
@@ -55,8 +54,10 @@ stock SHA512(input[]) {
             (i < 60) ? 0xB5C0FBCFBCF89B1D :
                        0xC67178F2E372532B;
 
-        temp1 = h + (ROTR(e, 14) ^ ROTR(e, 18) ^ ROTR(e, 41)) + ((e & f) ^ (~e & g)) + k + W[i];
-        temp2 = (ROTR(a, 28) ^ ROTR(a, 34) ^ ROTR(a, 39)) + ((a & b) ^ (a & c) ^ (b & c));
+        temp1 = h + ((e >> 14) | (e << (64 - 14))) ^ ((e >> 18) | (e << (64 - 18))) ^
+               ((e >> 41) | (e << (64 - 41))) + ((e & f) ^ (~e & g)) + k + W[i];
+        temp2 = ((a >> 28) | (a << (64 - 28))) ^ ((a >> 34) | (a << (64 - 34))) ^
+               ((a >> 39) | (a << (64 - 39))) + ((a & b) ^ (a & c) ^ (b & c));
 
         h = g;
         g = f;
