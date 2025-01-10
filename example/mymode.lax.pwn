@@ -103,6 +103,29 @@ SinusoidalMovement(playerid, Float:amplitude, Float:frequency, Float:time, axis)
     SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 }
 
+stock strtok(const input[], &index, output[], size)
+{
+    new length = strlen(input);
+    while ((index < length) && (input[index] <= ' '))
+    {
+        index++;
+    }
+
+    if (index >= length)
+    {
+        output[0] = EOS;
+        return 0;
+    }
+
+    new offset = 0;
+    while ((index < length) && (input[index] > ' ') && (offset < size - 1))
+    {
+        output[offset++] = input[index++];
+    }
+    output[offset] = EOS;
+    return 1;
+}
+
 //////////////////////////////////////////
 /////////// [global defines] /////////////
 //////////////////////////////////////////
