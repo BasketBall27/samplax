@@ -413,5 +413,40 @@ RotateObjectIn3D(objectid, Float:centerX, Float:centerY, Float:centerZ, Float:ax
     SetObjectPos(objectid, centerX + newX, centerY + newY, centerZ + newZ);
 }
 
+SimulateGravity(objects[], count, Float:timeStep, Float:gravitationalConstant) {
+    for (new i = 0; i < count; i++) {
+        new Float:x1, Float:y1, Float:z1;
+        GetObjectPos(objects[i], x1, y1, z1);
+
+        new Float:forceX = 0.0, Float:forceY = 0.0, Float:forceZ = 0.0;
+
+        for (new j = 0; j < count; j++) {
+            if (i == j) continue;
+
+            new Float:x2, Float:y2, Float:z2;
+            GetObjectPos(objects[j], x2, y2, z2);
+
+            new Float:dx = x2 - x1;
+            new Float:dy = y2 - y1;
+            new Float:dz = z2 - z1;
+            new Float:distance = floatsqroot(dx * dx + dy * dy + dz * dz);
+
+            if (distance > 0.0) {
+                new Float:force = gravitationalConstant / (distance * distance);
+                forceX += force * (dx / distance);
+                forceY += force * (dy / distance);
+                forceZ += force * (dz / distance);
+            }
+        }
+
+        new Float:newX = x1 + forceX * timeStep;
+        new Float:newY = y1 + forceY * timeStep;
+        new Float:newZ = z1 + forceZ * timeStep;
+
+        SetObjectPos(objects[i], newX, newY, newZ);
+    }
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
