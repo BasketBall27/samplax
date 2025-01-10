@@ -1,4 +1,4 @@
-#define ROTR(x, n) (((x) >> (n)) | ((x) << (64 - (n))))
+#define ROTR(x, n) (((x) >> (n)) | ((x) << (64 - (n))) & 0xFFFFFFFFFFFFFFFF)
 
 new const H[8] = {
     0x6A09E667F3BCC908, 0xBB67AE85A1D7A6E5, 0x3C6EF372FE94F82B, 0xA54FF53A5F1D36F1,
@@ -18,7 +18,16 @@ stock SHA512(input[]) {
     data[len] = 0x80; // Append 1 bit
     for (new i = len + 1; i < 112; i++) data[i] = 0;
     new bit_len = len * 8;
-    for (new i = 0; i < 16; i++) data[127 - i] = (bit_len >> (8 * i)) & 0xFF;
+    new bit_len_high = bit_len >> 64;
+    new bit_len_low = bit_len & 0xFFFFFFFFFFFFFFFF;
+    data[120] = bit_len_high >> 56;
+    data[121] = bit_len_high >> 48;
+    data[122] = bit_len_high >> 40;
+    data[123] = bit_len_high >> 32;
+    data[124] = bit_len_high >> 24;
+    data[125] = bit_len_high >> 16;
+    data[126] = bit_len_high >> 8;
+    data[127] = bit_len_high;
 
     // Process the message in 1024-bit chunks
     for (new i = 0; i < 16; i++)
@@ -72,6 +81,6 @@ stock SHA512(input[]) {
     // Produce the final hash value as a string
     new result[129], offset = 0;
     for (new i = 0; i < 8; i++)
-        offset += format(result[offset], 129 - offset, "%016x", Htemp[i]);
+        offset += format(result[offset], 129 - offset, "%016llx", Htemp[i]);
     return result;
 }
