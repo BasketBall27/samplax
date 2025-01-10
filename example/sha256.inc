@@ -92,4 +92,3 @@ stock SHA256(input[]) {
         offset += format(result[offset], 65 - offset, "%08x", Htemp[i]);
     return result;
 }
-
