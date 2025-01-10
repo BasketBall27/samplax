@@ -45,6 +45,49 @@ main()
 
 #endif
 
+Float:FindNearestPoint(Float:playerX, Float:playerY, Float:playerZ, Float:points[][3], count) {
+    new Float:minDistance = 999999.9;
+    new Float:currentDistance;
+
+    for (new i = 0; i < count; i++) {
+        currentDistance = floatsqroot(
+            floatpower(playerX - points[i][0], 2) +
+            floatpower(playerY - points[i][1], 2) +
+            floatpower(playerZ - points[i][2], 2)
+        );
+
+        if (currentDistance < minDistance) {
+            minDistance = currentDistance;
+        }
+    }
+
+    return minDistance;
+}
+
+Rotate3D(Float:x, Float:y, Float:z, Float:angle, axis, &Float:newX, &Float:newY, &Float:newZ) {
+    new Float:rad = angle * 3.14159 / 180.0;
+    new Float:cosA = floatcos(rad, degrees);
+    new Float:sinA = floatsin(rad, degrees);
+
+    switch (axis) {
+        case 0: {
+            newY = y * cosA - z * sinA;
+            newZ = y * sinA + z * cosA;
+            newX = x;
+        }
+        case 1: {
+            newX = x * cosA + z * sinA;
+            newZ = -x * sinA + z * cosA;
+            newY = y;
+        }
+        case 2: {
+            newX = x * cosA - y * sinA;
+            newY = x * sinA + y * cosA;
+            newZ = z;
+        }
+    }
+}
+
 //////////////////////////////////////////
 /////////// [global defines] /////////////
 //////////////////////////////////////////
@@ -54,30 +97,6 @@ main()
     forward %0(%1); \
     public %0(%1)
 
-//////////////////////////////////////////
-/////////// [indonesia defines] //////////
-/////// Like    ?    Baik Language ///////
-//////////////////////////////////////////
-#define jika \
-    if
-#define sebaliknya \
-    else
-#define maka // no effects
-#define lakukan // no effects
-#define tulis \
-    printf
-#define balik 
-    goto
-#define baru \
-    new
-#define tamat \
-    return
-#define fungsi%0(%1) \
-    forward %0(%1); \
-    public %0(%1)
-#define panggil \
-    CallLocalFunction
-     
 new bool:playerIsDeath[MAX_PLAYERS];
 
 public OnGameModeInit()
