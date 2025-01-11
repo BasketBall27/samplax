@@ -432,6 +432,8 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -K" (
         START %BATCHNAME%
         EXIT
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N") (
+	cmd /c netstat -an
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
     SET "BATCHTITLE=help"
@@ -440,7 +442,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :HELPL
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
     ECHO       	   [-F folder check] [-C clear screen] [-P pawncc release] [-V vscode tasks]
-    ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory]
+    ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory] [-N netstat]
     GOTO COMMAND_TYPEOF
 
 ) ELSE IF "%LAXTYPEOF%"=="cat ." (
