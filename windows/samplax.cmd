@@ -434,20 +434,20 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     )
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -X" (
-	git clone https://github.com/laterium/samplax.git
+    git clone https://github.com/laterium/samplax.git
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -P" (
-        START "" "https://github.com/pawn-lang/compiler/releases"
+    START "" "https://github.com/pawn-lang/compiler/releases"
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -D" (
-        cmd /c dir
+    cmd /c dir
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -K" (
-        START %BATCHNAME%
-        EXIT
+    START %BATCHNAME%
+    EXIT
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N" (
-	cmd /c netstat -an
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I") (
-	cmd /c ipconfig
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -S") (
-	cmd /c systeminfo
+    cmd /c netstat -an
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I" (
+    cmd /c ipconfig
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -S" (
+    cmd /c systeminfo
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
     SET "BATCHTITLE=help"
