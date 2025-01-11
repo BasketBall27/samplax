@@ -54,7 +54,7 @@ color F
 :: and "-d:0" are all equivalent.
 
 SET "ASM_OPTION_M=-o"
-SET "ASM_OPTION_P=-C- -O0 -d3"
+SET "ASM_OPTION_P=-C- -O0 -d1"
 
 IF not EXIST .cache ( MKDIR .cache )
 SET "METADAT_FILE=.cache\cache.log"
