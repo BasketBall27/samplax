@@ -1,4 +1,4 @@
-:: contribute: Anonim "Socket"
+:: contribute 2024-2025 Anonim "Socket"
 @ECHO OFF
 
 setlocal EnableDelayedExpansion
