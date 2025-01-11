@@ -13,6 +13,9 @@
 
 #define control. control_
 #define control_special_action  GetPlayerSpecialAction
+#define control_animation       GetAnimationName
+#define control_animdex         GetPlayerAnimationIndex
+
 #define camera. camera_
 #define camera_zoom             GetPlayerCameraZoom
 #define camera_asrat            GetPlayerCameraAspectRatio
