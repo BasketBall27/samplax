@@ -1,5 +1,9 @@
 @ECHO OFF
 
+:: contribute: Anonim (Socket)
+set "algorithm="
+powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '')"
+
 setlocal EnableDelayedExpansion
 
 color F
@@ -291,7 +295,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     FOR /r "%BATCHDIR%" %%a in ("!RENEWTYPEOF!.*") do (
             ECHO %%~nxa | FINDSTR /i ".lax" >nul
         IF not ERRORLEVEL 1 (
-            ECHO Error: File "%%~nxa" already contains .lax in its name. Skipping...
+            ECHO Error: File "%%~nxa" already contains .lax in its name...
             GOTO BATCHEND
         ) ELSE (
             ECHO %%~nxa | FINDSTR /i ".amx" >nul
@@ -312,7 +316,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     FOR /r "%BATCHDIR%" %%a in ("!NAMEFROMINPUT!.*") do (
         ECHO %%~nxa | FINDSTR /i ".lax" >nul
         IF not ERRORLEVEL 1 (
-            ECHO Error: File "%%~nxa" already contains .lax in its name. Skipping...
+            ECHO Error: File "%%~nxa" already contains .lax in its name...
             GOTO BATCHEND
         ) ELSE (
             ECHO %%~nxa | FINDSTR /i ".amx" >nul
