@@ -14,13 +14,15 @@
 #define control. control_
 #define control_special_action  GetPlayerSpecialAction
 #define control_animation       GetAnimationName
-#define control_animdex         GetPlayerAnimationIndex
+#define control_animation_index GetPlayerAnimationIndex
+#define control_vehicle_id      GetPlayerVehicleID
+#define control_vehicle_seat    GetPlayerVehicleSeat
 
 #define camera. camera_
 #define camera_zoom             GetPlayerCameraZoom
-#define camera_asrat            GetPlayerCameraAspectRatio
 #define camera_mode             GetPlayerCameraMode
 #define camera_pos              GetPlayerCameraPos
+#define camera_aspect_ratio     GetPlayerCameraAspectRatio
 #define camera_front_vector     GetPlayerCameraFrontVector
 #define camera_target_actor     GetPlayerCameraTargetActor
 #define camera_target_player    GetPlayerCameraTargetPlayer
