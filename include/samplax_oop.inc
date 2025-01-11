@@ -3,6 +3,8 @@
 #define player_velocity         GetPlayerVelocity
 #define player_angle            GetPlayerFacingAngle
 #define player_from_point       GetPlayerDistanceFromPoint
+#define player_world            GetPlayerVirtualWorld
+#define player_wanted           GetPlayerWantedLevel
 #define player_ammo             GetPlayerAmmo
 #define player_health           GetPlayerHealth
 #define player_armour           GetPlayerArmour
@@ -12,19 +14,17 @@
 #define player_name             GetPlayername
 #define player_money            GetPlayerMoney
 #define player_interior         GetPlayerInterior
-#define player_world            GetPlayerVirtualWorld
 #define player_skin             GetPlayerSkin
 #define player_color            GetPlayerColor
 #define player_colour           player_color
-#define player_wanted           GetPlayerWantedLevel
 #define player_ping             GetPlayerPing
 #define player_keys             GetPlayerKeys
 #define player_time             GetPlayerTime
 
 #define control. control_
-#define control_special_action  GetPlayerSpecialAction
 #define control_animation       GetAnimationName
 #define control_animation_index GetPlayerAnimationIndex
+#define control_special_action  GetPlayerSpecialAction
 #define control_vehicle_id      GetPlayerVehicleID
 #define control_vehicle_seat    GetPlayerVehicleSeat
 
