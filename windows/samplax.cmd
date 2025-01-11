@@ -548,7 +548,7 @@ GOTO COMMAND_TYPEOF
                             GOTO BATCHEND
                         )
                 )
-                ECHO.
+                ECHO .
             )
         )
     )
