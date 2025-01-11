@@ -442,7 +442,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -K" (
         START %BATCHNAME%
         EXIT
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N") (
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N" (
 	cmd /c netstat -an
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I") (
 	cmd /c ipconfig
