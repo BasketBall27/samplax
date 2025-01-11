@@ -59,6 +59,15 @@ SET "ASM_OPTION_P=-C- -O0 -d3"
 IF not EXIST .cache ( MKDIR .cache )
 SET "METADAT_FILE=.cache\cache.log"
 
+(
+    ECHO Thanks for using this program
+    ECHO -----------------------------
+    ECHO Use '$ cat -R' to compress Pawn to Lax and enter your script file name.
+    ECHO Use '$ cat -c' to compile your Pawn Scripts
+    ECHO Use '$ cat -r' for running your server's
+    ECHO Use '$ cat -t' to test your Server's
+) > ".cache\readme.txt"
+
 SET "algorithm=%username%@%computername%"
 IF EXIST "%BATCHDIR%.cache\users.txt" ( DEL "%BATCHDIR%.cache\users.txt" /q >nul )
 powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '') | Out-File -FilePath '.cache\users.txt' -Append"
