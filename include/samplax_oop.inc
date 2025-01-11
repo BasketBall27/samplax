@@ -1,5 +1,8 @@
 #define player. player_
-#define player_connect          IsPlayerConnected
+#define player_pos              GetPlayerPos
+#define player_velocity         GetPlayerVelocity
+#define player_angle            GetPlayerFacingAngle
+#define player_from_point       GetPlayerDistanceFromPoint
 #define player_ammo             GetPlayerAmmo
 #define player_health           GetPlayerHealth
 #define player_armour           GetPlayerArmour
@@ -10,6 +13,13 @@
 #define player_money            GetPlayerMoney
 #define player_interior         GetPlayerInterior
 #define player_world            GetPlayerVirtualWorld
+#define player_skin             GetPlayerSkin
+#define player_color            GetPlayerColour
+#define player_colour           player_color
+#define player_time             GetPlayerTime
+#define player_wanted           GetPlayerWantedLevel
+#define player_ping             GetPlayerPing
+#define player_keys             GetPlayerKeys
 
 #define control. control_
 #define control_special_action  GetPlayerSpecialAction
@@ -30,5 +40,6 @@
 #define camera_target_object    GetPlayerCameraTargetObject
 
 #define weapon. weapon_
+#define weapon_player           GetPlayerWeapon
 #define weapon_state            GetPlayerWeaponState
 #define weapon_data             GetPlayerWeaponData
