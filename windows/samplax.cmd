@@ -1,9 +1,6 @@
 :: contribute: Anonim (Socket)
 @ECHO OFF
 
-SET "algorithm=%username%@%computername%"
-powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '')"
-
 setlocal EnableDelayedExpansion
 
 color F
@@ -61,6 +58,9 @@ SET "ASM_OPTION_P=-C- -O0 -d3"
 
 IF not EXIST .cache ( MKDIR .cache )
 SET "METADAT_FILE=.cache\cache.log"
+
+SET "algorithm=%username%@%computername%"
+powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '') | Out-File -FilePath '.\cache\users.txt' -Append"
 
 TITLE %username%@%computername%:~
 
@@ -447,7 +447,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
     ECHO       	   [-F folder check] [-C clear screen] [-P pawncc release] [-V vscode tasks]
     ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory]
-    ECHO           [-N netstat] [-I ipconfig] [-S systeminfo]
+    ECHO       	   [-N netstat] [-I ipconfig] [-S systeminfo]
     GOTO COMMAND_TYPEOF
 
 ) ELSE IF "%LAXTYPEOF%"=="cat ." (
