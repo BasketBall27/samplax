@@ -1,4 +1,4 @@
-:: contribute: Anonim (Socket)
+:: contribute: Anonim "Socket"
 @ECHO OFF
 
 setlocal EnableDelayedExpansion
@@ -63,7 +63,7 @@ SET "algorithm=%username%@%computername%"
 IF EXIST "%BATCHDIR%.cache\users.txt" ( DEL "%BATCHDIR%.cache\users.txt" /q >nul )
 powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '') | Out-File -FilePath '.cache\users.txt' -Append"
 
-TITLE %username%@%computername%:~
+TITLE %algorithm%:~
 
 SET "BATCHDIR=%~dp0"
 SET "BATCHTITLE="
@@ -76,7 +76,7 @@ SET "SVRDEF=samp-server.exe"
 FOR /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & ECHO on & FOR %%b in (1) do rem"') do (SET "DEL=%%a")
 
 <nul SET /p="" 
-    CALL :COLOURTEXT A "%username%@%computername%" 
+    CALL :COLOURTEXT A "%algorithm%" 
     <nul SET /p=":~$ " 
     SET /p LAXTYPEOF=" "
     GOTO NEXT
@@ -96,7 +96,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     TASKKILL /f /im "%SVRDEF%" >nul 2>&1
 
     SET "BATCHTITLE=compilers"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
     
     ECHO.
 
@@ -108,7 +108,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     TASKKILL /f /im "%SVRDEF%" >nul 2>&1
     
     SET "BATCHTITLE=running"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
 
     GOTO SERVERS
 
@@ -133,7 +133,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     TASKKILL /f /im "%SVRDEF%" >nul 2>&1
 
     SET "BATCHTITLE=compile running"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
 
     SET "BATCHSTS=false"
     
@@ -161,7 +161,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
     IF ERRORLEVEL 1 (
         SET "BATCHTITLE=running - failed"
-        TITLE %username%@%computername%:~/!BATCHTITLE!
+        TITLE %algorithm%:~/!BATCHTITLE!
 
         ECHO.
         ECHO # [%time%] S?.. no
@@ -254,7 +254,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -C" (
 
     SET "BATCHTITLE=clear screen"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
 
     CLS
     GOTO COMMAND_TYPEOF
@@ -262,7 +262,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -V" (
 
     SET "BATCHTITLE=vscode tasks"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
 
     IF EXIST ".vscode" (
         RMDIR /s /q .vscode
@@ -334,7 +334,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -F" (
 
     SET "BATCHTITLE=folder existence check"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
 
     IF EXIST filterscripts (
         ECHO.
@@ -442,7 +442,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
     SET "BATCHTITLE=help"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
     
 :HELPL
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
@@ -458,7 +458,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="cat" (
 
     SET "BATCHTITLE=cat"
-    TITLE %username%@%computername%:~/!BATCHTITLE!
+    TITLE %algorithm%:~/!BATCHTITLE!
     GOTO HELPL
 
 ) ELSE IF "%LAXTYPEOF%"=="" (
@@ -531,10 +531,10 @@ GOTO COMMAND_TYPEOF
 						
                         IF "%BATCHSTS%"=="true" (
                             SET "BATCHTITLE=compilers "%ASM_OPTION_M% %ASM_OPTION_P%""
-                            TITLE %username%@%computername%:~/!BATCHTITLE!
+                            TITLE %algorithm%:~/!BATCHTITLE!
                         ) ELSE IF "%BATCHSTS%"=="false" (
                             SET "BATCHTITLE=compiler - running "%ASM_OPTION_M% %ASM_OPTION_P%""
-                            TITLE %username%@%computername%:~/!BATCHTITLE!
+                            TITLE %algorithm%:~/!BATCHTITLE!
                         )
                         ECHO Total Size [%%~zA / bytes] ^| "!AMX_O!" ^| "%ASM_OPTION_M% %ASM_OPTION_P%" 
                 )
