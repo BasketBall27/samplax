@@ -18,3 +18,4 @@
 
 #define weapon. weapon_
 #define weapon_state        GetPlayerWeaponState
+#define weapon_data         GetPlayerWeaponData
