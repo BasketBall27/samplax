@@ -15,6 +15,8 @@
 #define player_team         GetPlayerTeam
 #define player_score        GetPlayerScore
 #define player_drunk        GetPlayerDrunkLevel
+#define player_name         GetPlayername
+#define player_money        GetPlayerMoney
 
 #define weapon. weapon_
 #define weapon_state        GetPlayerWeaponState
