@@ -428,12 +428,16 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -P" (
         START "" "https://github.com/pawn-lang/compiler/releases"
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -D" (
-        DIR /s
+        cmd /c dir
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -K" (
         START %BATCHNAME%
         EXIT
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N") (
 	cmd /c netstat -an
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I") (
+	cmd /c ipconfig
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -S") (
+	cmd /c systeminfo
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
     SET "BATCHTITLE=help"
@@ -442,7 +446,8 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :HELPL
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
     ECHO       	   [-F folder check] [-C clear screen] [-P pawncc release] [-V vscode tasks]
-    ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory] [-N netstat]
+    ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory]
+    ECHO           [-N netstat] [-I ipconfig] [-S systeminfo]
     GOTO COMMAND_TYPEOF
 
 ) ELSE IF "%LAXTYPEOF%"=="cat ." (
