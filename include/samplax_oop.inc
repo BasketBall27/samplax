@@ -14,12 +14,12 @@
 #define player_interior         GetPlayerInterior
 #define player_world            GetPlayerVirtualWorld
 #define player_skin             GetPlayerSkin
-#define player_color            GetPlayerColour
+#define player_color            GetPlayerColor
 #define player_colour           player_color
-#define player_time             GetPlayerTime
 #define player_wanted           GetPlayerWantedLevel
 #define player_ping             GetPlayerPing
 #define player_keys             GetPlayerKeys
+#define player_time             GetPlayerTime
 
 #define control. control_
 #define control_special_action  GetPlayerSpecialAction
