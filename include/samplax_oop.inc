@@ -15,6 +15,7 @@
 #define camera_zoom           GetPlayerCameraZoom
 #define camera_asrat          GetPlayerCameraAspectRatio
 #define camera_mode           GetPlayerCameraMode
+#define camera_pos            GetPlayerCameraPos
 #define camera_front_vector   GetPlayerCameraFrontVector
 #define camera_target_actor   GetPlayerCameraTargetActor
 #define camera_target_player  GetPlayerCameraTargetPlayer
