@@ -419,7 +419,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         GOTO BATCHEND
     )
 
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -T" (
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -X" (
 	git clone https://github.com/laterium/samplax.git
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -P" (
         START "" "https://github.com/pawn-lang/compiler/releases"
@@ -436,7 +436,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :HELPL
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
     ECHO       	   [-F folder check] [-C clear screen] [-P pawncc release] [-V vscode tasks]
-    ECHO       	   [-T clone samplax] [-R rename file] [-K kill batch] [-D directory]
+    ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory]
     GOTO COMMAND_TYPEOF
 
 ) ELSE IF "%LAXTYPEOF%"=="cat ." (
