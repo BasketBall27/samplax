@@ -1,7 +1,7 @@
 @ECHO OFF
 
 :: contribute: Anonim (Socket)
-set "algorithm="
+set "algorithm=%username%@%computername%"
 powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '')"
 
 setlocal EnableDelayedExpansion
