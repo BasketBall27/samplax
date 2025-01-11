@@ -60,7 +60,7 @@ IF not EXIST .cache ( MKDIR .cache )
 SET "METADAT_FILE=.cache\cache.log"
 
 SET "algorithm=%username%@%computername%"
-powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '') | Out-File -FilePath '.\cache\users.txt' -Append"
+powershell -Command "[BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash([System.Text.Encoding]::UTF8.GetBytes('%algorithm%'))).Replace('-', '') | Out-File -FilePath '.cache\users.txt' -Append"
 
 TITLE %username%@%computername%:~
 
