@@ -494,7 +494,7 @@ GOTO COMMAND_TYPEOF
 :COMPILERS
     <nul SET /p=""
         CALL :COLOURTEXT a "~"
-        ECHO %time%
+        cmd /c time /t
         ECHO.
 
     FOR /r "%BATCHDIR%" %%P in (pawncc.exe) DO (
@@ -533,7 +533,7 @@ GOTO COMMAND_TYPEOF
                     ECHO.
                     <nul SET /p=""
                         CALL :COLOURTEXT a "~"
-                        ECHO %time%
+                        cmd /c time /t
                         ECHO.
 
                         CALL :COLOURTEXT a "[#]~"
