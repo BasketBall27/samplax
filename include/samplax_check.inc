@@ -29,16 +29,22 @@ public OnClientCheckResponse(playerid, type, arg, response)
     {       
         case 0x48:
         {
-            SetPVarInt(playerid, "NotAndroid", 1);
+            SetPVarInt(playerid, "NotLinux", 1);
+            SetPVarInt(playerid, "NotAndroid", 0);
+            SetPVarInt(playerid, "NotWindows", 1);
         }
         case 0x49:
         {
             if(response == 1)
             {
                 SetPVarInt(playerid, "NotLinux", 1);
+                SetPVarInt(playerid, "NotAndroid", 1);
+                SetPVarInt(playerid, "NotWindows", 0);
             }
             else
             {
+                SetPVarInt(playerid, "NotLinux", 0);
+                SetPVarInt(playerid, "NotAndroid", 1);
                 SetPVarInt(playerid, "NotWindows", 1);
             }
         }
