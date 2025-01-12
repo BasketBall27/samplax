@@ -1,0 +1,4 @@
+#include "samplax"
+
+main ()
+  print "Hello, World!";
