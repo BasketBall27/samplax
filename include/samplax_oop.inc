@@ -1,6 +1,7 @@
 #define player.                           player_
 //#define player::                          player_
 //#define player->                          player_
+#define player_connect                    IsPlayerConnected
 #define player_pos                        GetPlayerPos
 #define player_velocity                   GetPlayerVelocity
 #define player_angle                      GetPlayerFacingAngle
@@ -69,9 +70,9 @@
 #define player_set_special_action         SetPlayerSpecialAction
 #define player_mouse                      IsPlayerMouse
 
-#define player_android                    IsPlayerAndroid
-#define player_windows                    IsPlayerWindows
-#define player_linux                      IsPlayerLinux
+#define player_Android                    IsPlayerAndroid
+#define player_Windows                    IsPlayerWindows
+#define player_Linux                      IsPlayerLinux
 
 #define control.                          control_
 //#define control::                         control_
