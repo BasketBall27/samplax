@@ -435,7 +435,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         GOTO BATCHEND
     )
 
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I" (
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -G" (
 
     SET /p REPO="~ "
     cd REPO
@@ -454,8 +454,8 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     cmd /c netstat -an
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -S" (
     cmd /c systeminfo
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -G" (
-    cmd /c systeminfo
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I" (
+    powershell -Command "ipconfig"
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
     SET "BATCHTITLE=help"
