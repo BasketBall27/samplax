@@ -307,7 +307,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     FOR /r "%BATCHDIR%" %%a in ("!RENEWTYPEOF!.*") do (
             ECHO %%~nxa | FINDSTR /i ".lax" >nul
         IF not ERRORLEVEL 1 (
-            ECHO E: File "%%~nxa" already contains .lax in its name...
+            ECHO E: File "%%~nxa" The file has become a samplex file....
             GOTO BATCHEND
         ) ELSE (
             ECHO %%~nxa | FINDSTR /i ".amx" >nul
@@ -328,7 +328,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     FOR /r "%BATCHDIR%" %%a in ("!NAMEFROMINPUT!.*") do (
         ECHO %%~nxa | FINDSTR /i ".lax" >nul
         IF not ERRORLEVEL 1 (
-            ECHO E: File "%%~nxa" already contains .lax in its name...
+            ECHO E: File "%%~nxa" The file has become a samplex file....
             GOTO BATCHEND
         ) ELSE (
             ECHO %%~nxa | FINDSTR /i ".amx" >nul
