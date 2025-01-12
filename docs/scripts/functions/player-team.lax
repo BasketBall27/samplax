@@ -8,6 +8,11 @@ enum {
 public OnPlayerSpawn (playerid)
 {
   if (player.Team(playerid) == TEAM_ONE) {
-    printf "Team %d: %d", TEAM_ONE;
+    printf "Team %d: %d", playerid, TEAM_ONE;
   }
+  elif (player.Team(playerid) == TEAM_TWO) {
+    printf "Team %d: %d", playerid, TEAM_TWO;
+  }
+
+  return 1;
 }
