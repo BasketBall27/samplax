@@ -117,7 +117,9 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -r" (
 
     TASKKILL /f /im "%SVRDEF%" >nul 2>&1
-    
+
+    TIMEOUT /t 1
+
     SET "BATCHTITLE=running"
     TITLE %algorithm%:~/!BATCHTITLE!
 
