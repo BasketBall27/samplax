@@ -1,0 +1,9 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new wanted_level = player.Wanted(playerid);
+  printf "Wanted Level %d: %d", playerid, wanted_level;
+
+  return 1;
+}
