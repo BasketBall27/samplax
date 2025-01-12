@@ -1,0 +1,9 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new ammo = player.Ammo(playerid);
+  printf "Ammo %d: %d", playerid, ammo;
+  
+  return 1;
+}
