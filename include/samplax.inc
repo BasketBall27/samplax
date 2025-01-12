@@ -1,7 +1,9 @@
 #include "a_samp"
 
 #if !defined USING_SAMPLAX_OOP
+
   #define USING_SAMPLAX_OOP
+
   #define player_                           Player_
   #define player_Connect                    IsPlayerConnected
   #define player_Pos                        GetPlayerPos
@@ -184,24 +186,25 @@
   #define object_Set_no_camera_col          SetObjectNoCameraCol
   #define object_default_camera_col         SetObjectsDefaultCameraCol
   
-  #define object_get_model                  GetObjectModel
-  #define object_Set_material               SetObjectMaterial
-  #define object_Set_material_text          SetObjectMaterialText
-  
-  #define player_Object_create              CreatePlayerObject
-  #define player_Object_destroy             DestroyPlayerObject
-  #define player_Object_is_valid            IsValidPlayerObject
-  #define player_Object_Set_pos             SetPlayerObjectPos
-  #define player_Object_get_pos             GetPlayerObjectPos
-  #define player_Object_Set_rot             SetPlayerObjectRot
-  #define player_Object_get_rot             GetPlayerObjectRot
-  #define player_Object_move                MovePlayerObject
-  #define player_Object_stop                StopPlayerObject
-  #define player_Object_is_moving           IsPlayerObjectMoving
-  #define player_Object_attach_to_vehicle   AttachPlayerObjectToVehicle
-  #define player_Object_attach_to_player    AttachPlayerObjectToPlayer
-  #define player_Object_Set_no_camera_col   SetPlayerObjectNoCameraCol
-  #define player_Object_get_model           GetPlayerObjectModel
-  #define player_Object_Set_material        SetPlayerObjectMaterial
-  #define player_Object_Set_material_text   SetPlayerObjectMaterialText
+  #define object_Get_Model                  GetObjectModel
+  #define object_Set_Material               SetObjectMaterial
+  #define object_Set_Material_Text          SetObjectMaterialText
+
+  #define player_Object_Create              CreatePlayerObject
+  #define player_Object_Destroy             DestroyPlayerObject
+  #define player_Object_Is_Valid            IsValidPlayerObject
+  #define player_Object_Set_Pos             SetPlayerObjectPos
+  #define player_Object_Get_Pos             GetPlayerObjectPos
+  #define player_Object_Set_Rot             SetPlayerObjectRot
+  #define player_Object_Get_Rot             GetPlayerObjectRot
+  #define player_Object_Move                MovePlayerObject
+  #define player_Object_Stop                StopPlayerObject
+  #define player_Object_Is_Moving           IsPlayerObjectMoving
+  #define player_Object_Attach_To_Vehicle   AttachPlayerObjectToVehicle
+  #define player_Object_Attach_To_Player    AttachPlayerObjectToPlayer
+  #define player_Object_Set_No_Camera_Col   SetPlayerObjectNoCameraCol
+  #define player_Object_Get_Model           GetPlayerObjectModel
+  #define player_Object_Set_Material        SetPlayerObjectMaterial
+  #define player_Object_Set_Material_Text   SetPlayerObjectMaterialText
+
 #endif  
