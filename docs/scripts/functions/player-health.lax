@@ -2,7 +2,7 @@
 
 public OnPlayerSpawn (playerid)
 {
-  new Float:health;
+  new Float: health;
   health = player.Health(playerid);
   printf "Health %d: %.1f", health;
 
