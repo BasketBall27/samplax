@@ -1,6 +1,6 @@
 #define player.                           player_
-#define player::                          player_
-#define player->                          player_
+//#define player::                          player_
+//#define player->                          player_
 #define player_pos                        GetPlayerPos
 #define player_velocity                   GetPlayerVelocity
 #define player_angle                      GetPlayerFacingAngle
@@ -69,8 +69,8 @@
 #define player_set_special_action         SetPlayerSpecialAction
 
 #define control.                          control_
-#define control::                         control_
-#define control->                         control
+//#define control::                         control_
+//#define control->                         control
 #define control_animation                 GetAnimationName
 #define control_animation_index           GetPlayerAnimationIndex
 #define control_special_action            GetPlayerSpecialAction
@@ -78,8 +78,8 @@
 #define control_vehicle_seat              GetPlayerVehicleSeat
 
 #define camera.                           camera_
-#define camera::                          camera_
-#define camera->                          camera_
+//#define camera::                          camera_
+//#define camera->                          camera_
 #define camera_zoom                       GetPlayerCameraZoom
 #define camera_mode                       GetPlayerCameraMode
 #define camera_pos                        GetPlayerCameraPos
@@ -91,15 +91,15 @@
 #define camera_target_object              GetPlayerCameraTargetObject
 
 #define weapon.                           weapon_
-#define weapon::                          weapon_
-#define weapon->                          weapon_
+//#define weapon::                          weapon_
+//#define weapon->                          weapon_
 #define weapon_player                     GetPlayerWeapon
 #define weapon_state                      GetPlayerWeaponState
 #define weapon_data                       GetPlayerWeaponData
 
 #define vehicle.                          vehicle_
-#define vehicle::                         vehicle_
-#define vehicle->                         vehicle_
+//#define vehicle::                         vehicle_
+//#define vehicle->                         vehicle_
 #define vehicle_create                    CreateVehicle
 #define vehicle_destroy                   DestroyVehicle
 #define vehicle_is_streamed               IsVehicleStreamedIn
@@ -146,8 +146,8 @@
 #define vehicle_set_virtual_world         SetVehicleVirtualWorld
 
 #define actor.                            actor_
-#define actor::                           actor_
-#define actor->                           actor_
+//#define actor::                           actor_
+//#define actor->                           actor_
 #define actor_create                      CreateActor
 #define actor_destroy                     DestroyActor
 #define actor_is_streamed                 IsActorStreamedIn
@@ -166,8 +166,8 @@
 #define actor_is_valid                    IsValidActor
 
 #define object.                           object_
-#define object::                          object_
-#define object->                          object_
+//#define object::                          object_
+//#define object->                          object_
 #define object_create                     CreateObject
 #define object_destroy                    DestroyObject
 #define object_is_valid                   IsValidObject
