@@ -1,0 +1,10 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float: armour;
+  player.Armour(playerid, armour);
+  printf "Armour %d: %.1f", playerid, armour;
+
+  return 1;
+}
