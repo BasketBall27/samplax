@@ -1,0 +1,10 @@
+#include "a_samp"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float: angle;
+  new getAng = player.Angle(playerid);
+  printf "Angle %D: %.2f", getAng;
+  
+  return 1;
+}
