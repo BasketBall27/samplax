@@ -104,7 +104,7 @@ SET "BATCHOPTION=cat"
 
 IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
-    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
+    TASKKILL /f /im "samp-server.exe" >nul 2>&1
 
     SET "BATCHTITLE=compilers"
     TITLE %algorithm%:~/!BATCHTITLE!
@@ -116,10 +116,8 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -r" (
 
-    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
-
-    TIMEOUT /t 1
-
+    TASKKILL /f /im "samp-server.exe" >nul 2>&1
+    
     SET "BATCHTITLE=running"
     TITLE %algorithm%:~/!BATCHTITLE!
 
@@ -130,20 +128,20 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :TESTSERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
     
-    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
+    TASKKILL /f /im "samp-server.exe" >nul 2>&1
     
     TIMEOUT /t 1 >nul
-        START /min "" "%SVRDEF%"
+        START /min "" "!SVRDEF!"
     TIMEOUT /t 1 >nul
         TYPE server_log.txt
 		ECHO.
-	TASKKILL /f /im "%SVRDEF%" >nul 2>&1
+	TASKKILL /f /im "samp-server.exe" >nul 2>&1
 	
     GOTO BATCHEND
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -ci" (
 
-    TASKKILL /f /im "%SVRDEF%" >nul 2>&1
+    TASKKILL /f /im "samp-server.exe" >nul 2>&1
 
     SET "BATCHTITLE=compile running"
     TITLE %algorithm%:~/!BATCHTITLE!
@@ -160,13 +158,13 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
 :SERVERS
     IF EXIST "%BATCHDIR%server_log.txt" ( DEL "%BATCHDIR%server_log.txt" /q >nul )
 	
-    START "" "%SVRDEF%"
+    START "" "!SVRDEF!"
 	
     TIMEOUT /t 2 >nul
-    TASKLIST | FIND /i "%SVRDEF%" >nul
+    TASKLIST | FIND /i "!SVRDEF!" >nul
 
-    IF not EXIST %SVRDEF% (
-        ECHO # %SVRDEF% not found..
+    IF not EXIST !SVRDEF! (
+        ECHO # !SVRDEF! not found..
         TIMEOUT /t 1 >nul
             START "" "https://sa-mp.app/"
         GOTO COMMAND_TYPEOF
