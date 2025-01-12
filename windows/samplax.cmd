@@ -66,7 +66,7 @@ SET "METADAT_FILE=.cache\cache.log"
     ECHO -----------------------------
     ECHO Use '$ cat -R' to compress Pawn to Lax and enter your script file name.
     ECHO Use '$ cat -c' to compile your Pawn Script's
-    ECHO Use '$ cat -r' for running your server's
+    ECHO Use '$ cat -r' to running your server's
     ECHO Use '$ cat -t' to test your server's
 ) > ".cache\readme.txt"
 
