@@ -33,7 +33,7 @@
   #define player_Last_shot                  GetPlayerLastShotVectors
   #define player_Camera_look_at             GetPlayerCameraLookAt
   #define player_Checkpoint                 GetPlayerCheckpoint
-  #define player_Race_checkpoint            GetPlayerRaceCheckpoint
+  #define player_Checkpoint_Race            GetPlayerRaceCheckpoint
   #define player_Pvar_int                   GetPVarInt
   #define player_Pvar_string                GetPVarString
   #define player_Pvar_float                 GetPVarFloat
