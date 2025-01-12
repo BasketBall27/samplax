@@ -8,7 +8,7 @@ main () {
 
 public OnPlayerSpawn(playerid) {
 
-  if (player.Connected(playerid)) {
+  if (Player.Connected(playerid)) {
     SendClientMessage playerid, -1, "Welcome!";
   }
 
