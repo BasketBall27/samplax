@@ -1,4 +1,5 @@
 @echo off
 git clone https://github.com/pawn-lang/compiler.git
-git tag
+git checkout tags/v3.10.10
+git status
 pause
