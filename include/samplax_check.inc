@@ -4,6 +4,7 @@
   native SendClientCheck(playerid, type, arg, offset, size);
 #endif
 
+// https://github.com/Fairuz-Afdhal/IsPlayerUsingAndroid
 #define IsPlayerAndroid(%0)                 GetPVarInt(%0, "NotAndroid") == 0
 #define IsPlayerWindows(%0)                 GetPVarInt(%0, "NotLinux") == 0
 #define IsPlayerLinux(%0)                   GetPVarInt(%0, "NotWindows") == 0
