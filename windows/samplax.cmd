@@ -435,6 +435,12 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
         GOTO BATCHEND
     )
 
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I" (
+
+    SET /p REPO="~ "
+    cd REPO
+    git init
+
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -X" (
     git clone https://github.com/laterium/samplax.git
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -P" (
@@ -446,9 +452,9 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     EXIT
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -N" (
     cmd /c netstat -an
-) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -I" (
-    cmd /c ipconfig
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -S" (
+    cmd /c systeminfo
+) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -G" (
     cmd /c systeminfo
 ) ELSE IF "%LAXTYPEOF%"=="help" (
 
@@ -459,7 +465,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     ECHO usage: cat [-c compile] [-r running] [-t test server] [-ci compile-running] 
     ECHO       	   [-F folder check] [-C clear screen] [-P pawncc release] [-V vscode tasks]
     ECHO       	   [-X clone samplax] [-R rename file] [-K kill batch] [-D directory]
-    ECHO       	   [-N netstat] [-I ipconfig] [-S systeminfo]
+    ECHO       	   [-N netstat] [-I ipconfig] [-S systeminfo] [-G git init]
     GOTO COMMAND_TYPEOF
 
 ) ELSE IF "%LAXTYPEOF%"=="cat ." (
