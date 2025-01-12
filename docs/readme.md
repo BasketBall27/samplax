@@ -1,17 +1,20 @@
 # Example
-```pwn
-#include "samplax"
 
-main () {
-  printf "Hello, World!";
-}
+<details>
+  <summary>Click to see the script</summary>
 
-public OnPlayerSpawn(playerid) {
+  ```pwn
+  #include "samplax"
 
-  if (player.Connected(playerid)) {
-    SendClientMessage playerid, -1, "Welcome!";
+  main () {
+    printf "Hello, World!";
   }
 
-  return 1;
-}
-```
+  public OnPlayerSpawn(playerid) {
+
+    if (player.Connected(playerid)) {
+      SendClientMessage playerid, -1, "Welcome!";
+    }
+
+    return 1;
+  }
