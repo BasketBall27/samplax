@@ -27,11 +27,10 @@
   #define player_Ping                       GetPlayerPing
   #define player_Keys                       GetPlayerKeys
   #define player_Time                       GetPlayerTime
-  #define player_Weapon_state               GetPlayerWeaponState
-  #define player_Target_player              GetPlayerTargetPlayer
-  #define player_Target_actor               GetPlayerTargetActor
-  #define player_Last_shot                  GetPlayerLastShotVectors
-  #define player_Camera_look_at             GetPlayerCameraLookAt
+  #define player_Target_Player              GetPlayerTargetPlayer
+  #define player_Target_Actor               GetPlayerTargetActor
+  #define player_Last_Shot                  GetPlayerLastShotVectors
+  #define player_Camera_Look_At             GetPlayerCameraLookAt
   #define player_Checkpoint                 GetPlayerCheckpoint
   #define player_Checkpoint_Race            GetPlayerRaceCheckpoint
   #define player_Pvar_Type                  GetPVarType
@@ -75,113 +74,113 @@
   
   #define control_                          Control_
   #define control_Animation                 GetAnimationName
-  #define control_Animation_index           GetPlayerAnimationIndex
-  #define control_Special_action            GetPlayerSpecialAction
-  #define control_Vehicle_id                GetPlayerVehicleID
-  #define control_Vehicle_seat              GetPlayerVehicleSeat
+  #define control_Animation_Index           GetPlayerAnimationIndex
+  #define control_Special_Action            GetPlayerSpecialAction
+  #define control_Vehicle_Id                GetPlayerVehicleID
+  #define control_Vehicle_Seat              GetPlayerVehicleSeat
   
   #define camera_                           Camera_
-  #define camera_zoom                       GetPlayerCameraZoom
-  #define camera_mode                       GetPlayerCameraMode
-  #define camera_pos                        GetPlayerCameraPos
-  #define camera_aspect_ratio               GetPlayerCameraAspectRatio
-  #define camera_front_vector               GetPlayerCameraFrontVector
-  #define camera_target_actor               GetPlayerCameraTargetActor
-  #define camera_target_player              GetPlayerCameraTargetPlayer
-  #define camera_target_vehicle             GetPlayerCameraTargetVehicle
-  #define camera_target_Object              GetPlayerCameraTargetObject
+  #define camera_Zoom                       GetPlayerCameraZoom
+  #define camera_Mode                       GetPlayerCameraMode
+  #define camera_Pos                        GetPlayerCameraPos
+  #define camera_Aspect_Ratio               GetPlayerCameraAspectRatio
+  #define camera_Front_Vector               GetPlayerCameraFrontVector
+  #define camera_Target_Actor               GetPlayerCameraTargetActor
+  #define camera_Target_Player              GetPlayerCameraTargetPlayer
+  #define camera_Target_Vehicle             GetPlayerCameraTargetVehicle
+  #define camera_Target_Object              GetPlayerCameraTargetObject
   
   #define weapon_                           Weapon_
-  #define weapon_player                     GetPlayerWeapon
-  #define weapon_state                      GetPlayerWeaponState
-  #define weapon_data                       GetPlayerWeaponData
-  
+  #define weapon_Player                     GetPlayerWeapon
+  #define weapon_State                      GetPlayerWeaponState
+  #define weapon_Data                       GetPlayerWeaponData
+
   #define vehicle_                          Vehicle_
-  #define vehicle_create                    CreateVehicle
-  #define vehicle_destroy                   DestroyVehicle
-  #define vehicle_is_streamed               IsVehicleStreamedIn
-  #define vehicle_pos                       GetVehiclePos
-  #define vehicle_Set_pos                   SetVehiclePos
-  #define vehicle_z_angle                   GetVehicleZAngle
-  #define vehicle_Set_z_angle               SetVehicleZAngle
-  #define vehicle_rotation_quat             GetVehicleRotationQuat
-  #define vehicle_distance                  GetVehicleDistanceFromPoint
-  #define vehicle_params_for_player         SetVehicleParamsForPlayer
-  #define vehicle_manual_engine_lights      ManualVehicleEngineAndLights
-  #define vehicle_params_ex                 GetVehicleParamsEx
-  #define vehicle_Set_params_ex             SetVehicleParamsEx
-  #define vehicle_params_siren_state        GetVehicleParamsSirenState
-  #define vehicle_params_doors              GetVehicleParamsCarDoors
-  #define vehicle_Set_params_doors          SetVehicleParamsCarDoors
-  #define vehicle_params_windows            GetVehicleParamsCarWindows
-  #define vehicle_Set_params_windows        SetVehicleParamsCarWindows
-  #define vehicle_respawn                   SetVehicleToRespawn
-  #define vehicle_link_interior             LinkVehicleToInterior
-  #define vehicle_add_component             AddVehicleComponent
-  #define vehicle_remove_component          RemoveVehicleComponent
-  #define vehicle_color                     ChangeVehicleColor
-  #define vehicle_paintjob                  ChangeVehiclePaintjob
-  #define vehicle_health                    GetVehicleHealth
-  #define vehicle_Set_health                SetVehicleHealth
-  #define vehicle_attach_trailer            AttachTrailerToVehicle
-  #define vehicle_detach_trailer            DetachTrailerFromVehicle
-  #define vehicle_is_trailer_attached       IsTrailerAttachedToVehicle
-  #define vehicle_trailer                   GetVehicleTrailer
-  #define vehicle_number_plate              GetVehicleNumberPlate
-  #define vehicle_Set_number_plate          SetVehicleNumberPlate
-  #define vehicle_model                     GetVehicleModel
-  #define vehicle_component_in_slot         GetVehicleComponentInSlot
-  #define vehicle_component_type            GetVehicleComponentType
-  #define vehicle_repair                    RepairVehicle
-  #define vehicle_velocity                  GetVehicleVelocity
-  #define vehicle_Set_velocity              SetVehicleVelocity
-  #define vehicle_Set_angular_velocity      SetVehicleAngularVelocity
-  #define vehicle_damage_status             GetVehicleDamageStatus
-  #define vehicle_update_damage_status      UpdateVehicleDamageStatus
-  #define vehicle_model_info                GetVehicleModelInfo
-  #define vehicle_virtual_world             GetVehicleVirtualWorld
-  #define vehicle_Set_virtual_world         SetVehicleVirtualWorld
+  #define vehicle_Create                    CreateVehicle
+  #define vehicle_Destroy                   DestroyVehicle
+  #define vehicle_Is_Streamed               IsVehicleStreamedIn
+  #define vehicle_Pos                       GetVehiclePos
+  #define vehicle_Set_Pos                   SetVehiclePos
+  #define vehicle_Z_Angle                   GetVehicleZAngle
+  #define vehicle_Set_Z_Angle               SetVehicleZAngle
+  #define vehicle_Rotation_Quat             GetVehicleRotationQuat
+  #define vehicle_Distance                  GetVehicleDistanceFromPoint
+  #define vehicle_Params_For_Player         SetVehicleParamsForPlayer
+  #define vehicle_Manual_Engine_Lights      ManualVehicleEngineAndLights
+  #define vehicle_Params_Ex                 GetVehicleParamsEx
+  #define vehicle_Set_Params_Ex             SetVehicleParamsEx
+  #define vehicle_Params_Siren_State        GetVehicleParamsSirenState
+  #define vehicle_Params_Doors              GetVehicleParamsCarDoors
+  #define vehicle_Set_Params_Doors          SetVehicleParamsCarDoors
+  #define vehicle_Params_Windows            GetVehicleParamsCarWindows
+  #define vehicle_Set_Params_Windows        SetVehicleParamsCarWindows
+  #define vehicle_Respawn                   SetVehicleToRespawn
+  #define vehicle_Link_Interior             LinkVehicleToInterior
+  #define vehicle_Add_Component             AddVehicleComponent
+  #define vehicle_Remove_Component          RemoveVehicleComponent
+  #define vehicle_Color                     ChangeVehicleColor
+  #define vehicle_Paintjob                  ChangeVehiclePaintjob
+  #define vehicle_Health                    GetVehicleHealth
+  #define vehicle_Set_Health                SetVehicleHealth
+  #define vehicle_Attach_Trailer            AttachTrailerToVehicle
+  #define vehicle_Detach_Trailer            DetachTrailerFromVehicle
+  #define vehicle_Is_Trailer_Attached       IsTrailerAttachedToVehicle
+  #define vehicle_Trailer                   GetVehicleTrailer
+  #define vehicle_Number_Plate              GetVehicleNumberPlate
+  #define vehicle_Set_Number_Plate          SetVehicleNumberPlate
+  #define vehicle_Model                     GetVehicleModel
+  #define vehicle_Component_In_Slot         GetVehicleComponentInSlot
+  #define vehicle_Component_Type            GetVehicleComponentType
+  #define vehicle_Repair                    RepairVehicle
+  #define vehicle_Velocity                  GetVehicleVelocity
+  #define vehicle_Set_Velocity              SetVehicleVelocity
+  #define vehicle_Set_Angular_Velocity      SetVehicleAngularVelocity
+  #define vehicle_Damage_Status             GetVehicleDamageStatus
+  #define vehicle_Update_Damage_Status      UpdateVehicleDamageStatus
+  #define vehicle_Model_Info                GetVehicleModelInfo
+  #define vehicle_Virtual_World             GetVehicleVirtualWorld
+  #define vehicle_Set_Virtual_World         SetVehicleVirtualWorld
   
-  #define actor_                            Actor_
-  #define actor_create                      CreateActor
-  #define actor_destroy                     DestroyActor
-  #define actor_is_streamed                 IsActorStreamedIn
-  #define actor_virtual_world               GetActorVirtualWorld
-  #define actor_Set_virtual_world           SetActorVirtualWorld
-  #define actor_apply_animation             ApplyActorAnimation
-  #define actor_clear_animations            ClearActorAnimations
-  #define actor_pos                         GetActorPos
-  #define actor_Set_pos                     SetActorPos
-  #define actor_facing_angle                GetActorFacingAngle
-  #define actor_Set_facing_angle            SetActorFacingAngle
-  #define actor_health                      GetActorHealth
-  #define actor_Set_health                  SetActorHealth
-  #define actor_invulnerable                IsActorInvulnerable
-  #define actor_Set_invulnerable            SetActorInvulnerable
-  #define actor_is_valid                    IsValidActor
+  #define actor_                            ACTOR_
+  #define actor_Create                      CreateActor
+  #define actor_Destroy                     DestroyActor
+  #define actor_Is_Streamed                 IsActorStreamedIn
+  #define actor_Virtual_World               GetActorVirtualWorld
+  #define actor_Set_Virtual_World           SetActorVirtualWorld
+  #define actor_Apply_Animation             ApplyActorAnimation
+  #define actor_Clear_Animations            ClearActorAnimations
+  #define actor_Pos                         GetActorPos
+  #define actor_Set_Pos                     SetActorPos
+  #define actor_Facing_Angle                GetActorFacingAngle
+  #define actor_Set_Facing_Angle            SetActorFacingAngle
+  #define actor_Health                      GetActorHealth
+  #define actor_Set_Health                  SetActorHealth
+  #define actor_Invulnerable                IsActorInvulnerable
+  #define actor_Set_Invulnerable            SetActorInvulnerable
+  #define actor_Is_Valid                    IsValidActor
   
   #define object_                           Object_
-  #define object_create                     CreateObject
-  #define object_destroy                    DestroyObject
-  #define object_is_valid                   IsValidObject
+  #define object_Create                     CreateObject
+  #define object_Destroy                    DestroyObject
+  #define object_Is_Valid                   IsValidObject
   
-  #define object_Set_pos                    SetObjectPos
-  #define object_get_pos                    GetObjectPos
-  #define object_Set_rot                    SetObjectRot
-  #define object_get_rot                    GetObjectRot
+  #define object_Set_Pos                    SetObjectPos
+  #define object_Get_Pos                    GetObjectPos
+  #define object_Set_Rot                    SetObjectRot
+  #define object_Get_Rot                    GetObjectRot
   
-  #define object_move                       MoveObject
-  #define object_stop                       StopObject
-  #define object_is_moving                  IsObjectMoving
+  #define object_Move                       MoveObject
+  #define object_Stop                       StopObject
+  #define object_Is_Moving                  IsObjectMoving
   
-  #define object_attach_to_vehicle          AttachObjectToVehicle
-  #define object_attach_to_Object           AttachObjectToObject
-  #define object_attach_to_player           AttachObjectToPlayer
+  #define object_Attach_To_Vehicle          AttachObjectToVehicle
+  #define object_Attach_To_Object           AttachObjectToObject
+  #define object_Attach_To_Player           AttachObjectToPlayer
   
-  #define object_edit                       EditObject
-  #define object_edit_player                EditPlayerObject
-  #define object_select                     SelectObject
-  #define object_cancel_edit                CancelEdit
+  #define object_Edit                       EditObject
+  #define object_Edit_Player                EditPlayerObject
+  #define object_Select                     SelectObject
+  #define object_Cancel_Edit                CancelEdit
   
   #define object_Set_no_camera_col          SetObjectNoCameraCol
   #define object_default_camera_col         SetObjectsDefaultCameraCol
