@@ -44,6 +44,20 @@ public OnClientCheckResponse(playerid, type, arg, response)
     return 1;
 }
 
+#if defined _ALS_SelectTextDraw
+    #undef SelectTextDraw
+#else
+    #define _ALS_SelectTextDraw
+#endif
+#define SelectTextDraw L_SelectTextDraw
+
+#if defined _ALS_CancelSelectTextDraw
+    #undef CancelSelectTextDraw
+#else
+    #define _ALS_CancelSelectTextDraw
+#endif
+#define CancelSelectTextDraw L_CancelSelectTextDraw
+
 #if defined _ALS_OnPlayerConnect
     #undef OnPlayerConnect
 #else
