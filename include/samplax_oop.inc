@@ -1,7 +1,7 @@
 #define player.                           player_
 //#define player::                          player_
 //#define player->                          player_
-#define player_connect                    IsPlayerConnected
+#define player_Connect                    IsPlayerConnected
 #define player_pos                        GetPlayerPos
 #define player_velocity                   GetPlayerVelocity
 #define player_angle                      GetPlayerFacingAngle
