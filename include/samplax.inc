@@ -50,20 +50,20 @@
   #define player_Set_Ammo                   SetPlayerAmmo
   #define player_Set_Team                   SetPlayerTeam
   #define player_Set_Score                  SetPlayerScore
-  #define player_Set_Drunk_Level            SetPlayerDrunkLevel
+  #define player_Set_Drunk                  SetPlayerDrunkLevel
   #define player_Set_Color                  SetPlayerColor
   #define player_Set_Skin                   SetPlayerSkin
   #define player_Set_Name                   SetPlayerName
   #define player_Set_Time                   SetPlayerTime
   #define player_Set_Weather                SetPlayerWeather
-  #define player_Set_Wanted_Level           SetPlayerWantedLevel
+  #define player_Set_Wanted                 SetPlayerWantedLevel
   #define player_Set_Fighting_Style         SetPlayerFightingStyle
   #define player_Set_Velocity               SetPlayerVelocity
   #define player_Set_Shop_Name              SetPlayerShopName
   #define player_Set_Skill_Level            SetPlayerSkillLevel
   #define player_Set_Chat_Bubble            SetPlayerChatBubble
   #define player_Set_Checkpoint             SetPlayerCheckpoint
-  #define player_Set_Race_Checkpoint        SetPlayerRaceCheckpoint
+  #define player_Set_Checkpoint_Race        SetPlayerRaceCheckpoint
   #define player_Set_World_Bounds           SetPlayerWorldBounds
   #define player_Set_Marker                 SetPlayerMarkerForPlayer
   #define player_Set_Map_Icon               SetPlayerMapIcon
