@@ -1,0 +1,9 @@
+#include "a_samp"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float: getFromP = player.From.Point(playerid, 123.0, 123.1, 123.2);
+  printf "ID %d from Point: %.2f", getFromP";
+
+  return 1;
+}
