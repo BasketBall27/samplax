@@ -1,5 +1,9 @@
 #include "a_samp"
 
+#if !defined elif
+  #define elif      else if
+#endif
+
 #if !defined USING_SAMPLAX_OOP
 
   #define USING_SAMPLAX_OOP
