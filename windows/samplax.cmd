@@ -1,4 +1,6 @@
 :: contribute 2024-2025 Anonim "Socket"
+:: thanks for using this program.
+
 @ECHO OFF
 
 setlocal EnableDelayedExpansion
