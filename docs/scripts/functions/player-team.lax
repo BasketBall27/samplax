@@ -1,0 +1,13 @@
+#include "samplax"
+
+enum {
+  TEAM_ONE    = 0,
+  TEAM_TWO    = 1
+};
+
+public OnPlayerSpawn (playerid)
+{
+  if (player.Team(playerid) == TEAM_ONE) {
+    printf "Team %d: %d", TEAM_ONE;
+  }
+}
