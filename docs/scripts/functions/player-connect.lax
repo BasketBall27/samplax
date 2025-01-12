@@ -1,0 +1,10 @@
+#include "samplax"
+
+public OnPlayerConnect (playerid)
+{
+  if (player.Connect(playerid)) {
+    // code
+  }
+
+  return 1;
+}
