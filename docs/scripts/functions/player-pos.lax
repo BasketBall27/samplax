@@ -1,0 +1,10 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float: posX, Float:posY, Float:posZ;
+  new getPos = player.Pos(playerid, posX, posY, posZ);
+  printf "POS %d: %.2f, %.2f, %.2f", posX, posY, posZ;
+
+  return 1;
+}
