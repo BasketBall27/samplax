@@ -8,6 +8,8 @@
 #define IsPlayerWindows(%0)                 GetPVarInt(%0, "NotLinux") == 0
 #define IsPlayerLinux(%0)                   GetPVarInt(%0, "NotWindows") == 0
 
+#define IsPlayerMouse(%0)                   GetPVarInt(%0, "MouseP") == 1
+
 public OnPlayerConnect(playerid)
 {
     SendClientCheck(playerid, 0x48, 0, 0, 2);
@@ -42,6 +44,16 @@ public OnClientCheckResponse(playerid, type, arg, response)
         L_OnClientCheckResponse(playerid, type, arg, response);
     #endif
     return 1;
+}
+
+stock L_SelectTextDraw(playerid, colour) {
+  SetPVarInt(playerid, "MouseP", 1);
+  return 1;
+}
+
+stock L_CancelSelectTextDraw(playerid) {
+  SetPVarInt(playerid, "MouseP", 0);
+  return 1;
 }
 
 #if defined _ALS_SelectTextDraw
