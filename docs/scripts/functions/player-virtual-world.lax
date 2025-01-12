@@ -1,0 +1,9 @@
+#include "a_samp"
+
+public OnPlayerSpawn (playerid)
+{
+  new virtual_world = player.World(playerid);
+  printf "Virtual World %d: %d", playerid, virtual_world;
+
+  return 1;
+}
