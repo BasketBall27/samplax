@@ -1,5 +1,5 @@
 # Documentation
-## Example
+## samplax Included
 
 <details>
   <summary>Click to see the script</summary>
