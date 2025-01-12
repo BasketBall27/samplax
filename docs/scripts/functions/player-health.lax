@@ -1,0 +1,8 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float:health;
+  health = player.Health(playerid);
+
+  
