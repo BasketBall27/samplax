@@ -33,6 +33,38 @@
 #define player_pvar_type        GetPVarType
 #define player_pvar_name_index  GetPVarNameAtIndex
 #define player_pvar_upper_index GetPVarsUpperIndex
+#define player_set_spawn_info          SetSpawnInfo
+#define player_set_pos                 SetPlayerPos
+#define player_set_pos_find_z          SetPlayerPosFindZ
+#define player_set_angle               SetPlayerFacingAngle
+#define player_set_interior            SetPlayerInterior
+#define player_set_health              SetPlayerHealth
+#define player_set_armour              SetPlayerArmour
+#define player_set_ammo                SetPlayerAmmo
+#define player_set_team                SetPlayerTeam
+#define player_set_score               SetPlayerScore
+#define player_set_drunk_level         SetPlayerDrunkLevel
+#define player_set_color               SetPlayerColor
+#define player_set_skin                SetPlayerSkin
+#define player_set_name                SetPlayerName
+#define player_set_time                SetPlayerTime
+#define player_set_weather             SetPlayerWeather
+#define player_set_wanted_level        SetPlayerWantedLevel
+#define player_set_fighting_style      SetPlayerFightingStyle
+#define player_set_velocity            SetPlayerVelocity
+#define player_set_shop_name           SetPlayerShopName
+#define player_set_skill_level         SetPlayerSkillLevel
+#define player_set_chat_bubble         SetPlayerChatBubble
+#define player_set_checkpoint          SetPlayerCheckpoint
+#define player_set_race_checkpoint     SetPlayerRaceCheckpoint
+#define player_set_world_bounds        SetPlayerWorldBounds
+#define player_set_marker              SetPlayerMarkerForPlayer
+#define player_set_map_icon            SetPlayerMapIcon
+#define player_set_camera_pos          SetPlayerCameraPos
+#define player_set_camera_look_at      SetPlayerCameraLookAt
+#define player_set_virtual_world       SetPlayerVirtualWorld
+#define player_set_attached_object     SetPlayerAttachedObject
+#define player_set_special_action      SetPlayerSpecialAction
 
 #define control. control_
 #define control_animation       GetAnimationName
@@ -57,7 +89,6 @@
 #define weapon_state            GetPlayerWeaponState
 #define weapon_data             GetPlayerWeaponData
 
-//
 #define vehicle. vehicle_
 
 #define vehicle_create                CreateVehicle
@@ -104,3 +135,70 @@
 #define vehicle_model_info            GetVehicleModelInfo
 #define vehicle_virtual_world         GetVehicleVirtualWorld
 #define vehicle_set_virtual_world     SetVehicleVirtualWorld
+
+#define actor. actor_
+
+#define actor_create                 CreateActor
+#define actor_destroy                DestroyActor
+#define actor_is_streamed            IsActorStreamedIn
+#define actor_virtual_world          GetActorVirtualWorld
+#define actor_set_virtual_world      SetActorVirtualWorld
+#define actor_apply_animation        ApplyActorAnimation
+#define actor_clear_animations       ClearActorAnimations
+#define actor_pos                    GetActorPos
+#define actor_set_pos                SetActorPos
+#define actor_facing_angle           GetActorFacingAngle
+#define actor_set_facing_angle       SetActorFacingAngle
+#define actor_health                 GetActorHealth
+#define actor_set_health             SetActorHealth
+#define actor_invulnerable           IsActorInvulnerable
+#define actor_set_invulnerable       SetActorInvulnerable
+#define actor_is_valid               IsValidActor
+
+#define object. object_
+
+#define object_create                CreateObject
+#define object_destroy               DestroyObject
+#define object_is_valid              IsValidObject
+
+#define object_set_pos               SetObjectPos
+#define object_get_pos               GetObjectPos
+#define object_set_rot               SetObjectRot
+#define object_get_rot               GetObjectRot
+
+#define object_move                  MoveObject
+#define object_stop                  StopObject
+#define object_is_moving             IsObjectMoving
+
+#define object_attach_to_vehicle     AttachObjectToVehicle
+#define object_attach_to_object      AttachObjectToObject
+#define object_attach_to_player      AttachObjectToPlayer
+
+#define object_edit                  EditObject
+#define object_edit_player           EditPlayerObject
+#define object_select                SelectObject
+#define object_cancel_edit           CancelEdit
+
+#define object_set_no_camera_col     SetObjectNoCameraCol
+#define object_default_camera_col    SetObjectsDefaultCameraCol
+
+#define object_get_model             GetObjectModel
+#define object_set_material          SetObjectMaterial
+#define object_set_material_text     SetObjectMaterialText
+
+#define player_object_create                  CreatePlayerObject
+#define player_object_destroy                 DestroyPlayerObject
+#define player_object_is_valid                IsValidPlayerObject
+#define player_object_set_pos                 SetPlayerObjectPos
+#define player_object_get_pos                 GetPlayerObjectPos
+#define player_object_set_rot                 SetPlayerObjectRot
+#define player_object_get_rot                 GetPlayerObjectRot
+#define player_object_move                    MovePlayerObject
+#define player_object_stop                    StopPlayerObject
+#define player_object_is_moving               IsPlayerObjectMoving
+#define player_object_attach_to_vehicle       AttachPlayerObjectToVehicle
+#define player_object_attach_to_player        AttachPlayerObjectToPlayer
+#define player_object_set_no_camera_col       SetPlayerObjectNoCameraCol
+#define player_object_get_model               GetPlayerObjectModel
+#define player_object_set_material            SetPlayerObjectMaterial
+#define player_object_set_material_text       SetPlayerObjectMaterialText
