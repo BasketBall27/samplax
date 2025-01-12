@@ -34,10 +34,10 @@
   #define player_Camera_look_at             GetPlayerCameraLookAt
   #define player_Checkpoint                 GetPlayerCheckpoint
   #define player_Checkpoint_Race            GetPlayerRaceCheckpoint
-  #define player_Pvar_int                   GetPVarInt
-  #define player_Pvar_string                GetPVarString
-  #define player_Pvar_float                 GetPVarFloat
-  #define player_Pvar_type                  GetPVarType
+  #define player_Pvar_Int                   GetPVarInt
+  #define player_Pvar_String                GetPVarString
+  #define player_Pvar_Float                 GetPVarFloat
+  #define player_Pvar_Type                  GetPVarType
   #define player_Pvar_Name_Index            GetPVarNameAtIndex
   #define player_Pvar_Upper_Index           GetPVarsUpperIndex
   #define player_Set_Spawn_Info             SetSpawnInfo
