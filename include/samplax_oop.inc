@@ -1,6 +1,3 @@
-#include "a_samp"
-#include "samplax_check"
-
 #define player.                           player_
 //#define player::                          player_
 //#define player->                          player_
