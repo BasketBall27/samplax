@@ -40,6 +40,9 @@ public OnClientCheckResponse(playerid, type, arg, response)
             }
         }
     }
+    #if defined L_OnClientCheckResponse
+        L_OnClientCheckResponse(playerid, type, arg, response);
+    #endif
     return 1;
 }
 
@@ -51,4 +54,14 @@ public OnClientCheckResponse(playerid, type, arg, response)
 #define OnPlayerConnect L_OnPlayerConnect
 #if defined L_OnPlayerConnect
     forward L_OnPlayerConnect(playerid);
+#endif
+
+#if defined _ALS_OnClientCheckResponse
+    #undef OnClientCheckResponse
+#else
+    #define _ALS_OnClientCheckResponse
+#endif
+#define OnClientCheckResponse L_OnClientCheckResponse
+#if defined L_OnClientCheckResponse
+    forward L_OnClientCheckResponse(playerid, type, arg, response);
 #endif
