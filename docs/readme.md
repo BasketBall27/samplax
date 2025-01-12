@@ -1,4 +1,5 @@
-# Example
+# Documentation
+## Example
 
 <details>
   <summary>Click to see the script</summary>
