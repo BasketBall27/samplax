@@ -182,8 +182,8 @@
   #define object_Select                     SelectObject
   #define object_Cancel_Edit                CancelEdit
   
-  #define object_Set_no_camera_col          SetObjectNoCameraCol
-  #define object_default_camera_col         SetObjectsDefaultCameraCol
+  #define object_Set_Camera_No_Col          SetObjectNoCameraCol
+  #define object_Set_Camera_Default_Col     SetObjectsDefaultCameraCol
   
   #define object_Get_Model                  GetObjectModel
   #define object_Set_Material               SetObjectMaterial
