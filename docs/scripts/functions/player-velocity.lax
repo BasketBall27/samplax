@@ -1,0 +1,10 @@
+#include "samplax"
+
+public OnPlayerSpawn (playerid)
+{
+  new Float: veloX, Float: veloY, Float: veloZ;
+  new getVelo = player.Velocity(playerid, veloX, veloY, veloZ);
+  printf "Velocity %d: %.2f %.2f %.2f", playerid, veloX, veloY, veloZ;
+
+  return 1;
+}
