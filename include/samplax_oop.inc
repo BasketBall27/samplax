@@ -1,3 +1,6 @@
+#include "a_samp"
+#include "samplax_check"
+
 #define player.                           player_
 //#define player::                          player_
 //#define player->                          player_
@@ -67,6 +70,10 @@
 #define player_set_virtual_world          SetPlayerVirtualWorld
 #define player_set_attached_object        SetPlayerAttachedObject
 #define player_set_special_action         SetPlayerSpecialAction
+
+#define player_android                    IsPlayerAndroid
+#define player_windows                    IsPlayerWindows
+#define player_linux                      IsPlayerLinux
 
 #define control.                          control_
 //#define control::                         control_
