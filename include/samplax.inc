@@ -1,5 +1,6 @@
 #include "a_samp"
 
+#define using_samplax_oop
 #if defined using_samplax_oop
   #define player.                           player_
   //#define player::                          player_
