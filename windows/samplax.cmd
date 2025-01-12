@@ -436,11 +436,7 @@ IF "%LAXTYPEOF%"=="%BATCHOPTION% -c" (
     )
 
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -G" (
-
-    SET /p REPO="~ "
-    cd REPO
     git init
-
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -X" (
     git clone https://github.com/laterium/samplax.git
 ) ELSE IF "%LAXTYPEOF%"=="%BATCHOPTION% -P" (
